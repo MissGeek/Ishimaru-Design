@@ -36,7 +36,7 @@ if(isset($_GET['add_type']))
 	$titre_page = $lang_site['Admin add type'];
 	$module = 'admin';
 	require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=tutorials"><?php echo $lang_site['Tutorials']; ?></a> &gt; <a href="admin_tuts_types.php"><?php echo $lang_site['Types']; ?></a> &gt; <?php echo $lang_site['Admin add type']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=tutorials"><?php echo $lang_site['Tutorials']; ?></a> &gt; <a href="admin_tuts_types.php"><?php echo $lang_site['Types']; ?></a> &gt; <?php echo $lang_site['Admin add type']; ?></p>
 <h3><?php echo $lang_site['Admin add type']; ?></h3>
 <form method="post" action="admin_tuts_types.php?add_type=true">
 	<p class="form">
@@ -89,7 +89,7 @@ if(isset($_GET['edit_type']))
 	$titre_page = $lang_site['Admin edit type'];
 	$module = 'admin';
 	require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=tutorials"><?php echo $lang_site['Tutorials']; ?></a> &gt; <a href="admin_tuts_types.php"><?php echo $lang_site['Types']; ?></a> &gt; <?php echo $lang_site['Admin edit type']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=tutorials"><?php echo $lang_site['Tutorials']; ?></a> &gt; <a href="admin_tuts_types.php"><?php echo $lang_site['Types']; ?></a> &gt; <?php echo $lang_site['Admin edit type']; ?></p>
 <h3><?php echo $lang_site['Admin edit type']; ?></h3>
 <form method="post" action="admin_tuts_types.php?edit_type=<?php echo $edit_type; ?>">
 	<p>
@@ -143,7 +143,7 @@ if(isset($_GET['del_type']))
 		$titre_page = $lang_site['Admin delete type'];
 		$module = 'admin';
 		require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=tutorials"><?php echo $lang_site['Tutorials']; ?></a> &gt; <a href="admin_tuts_types.php"><?php echo $lang_site['Categories']; ?></a> &gt; <?php echo $lang_site['Admin delete type head']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=tutorials"><?php echo $lang_site['Tutorials']; ?></a> &gt; <a href="admin_tuts_types.php"><?php echo $lang_site['Categories']; ?></a> &gt; <?php echo $lang_site['Admin delete type head']; ?></p>
 <h3><?php echo $lang_site['Admin delete type head']; ?></h3>
 <form method="post" action="admin_tuts_types.php?del_type=<?php echo $type_id; ?>">
 	<div class="inform">
@@ -151,7 +151,7 @@ if(isset($_GET['del_type']))
 		<fieldset>
 			<legend><?php echo $lang_site['Admin confirm delete type subhead']; ?></legend>
 			<div class="infldset">
-				<p><?php printf($lang_site['Admin confirm delete type info'], pun_htmlspecialchars(shorttext_lang($type_name,$lang))); ?></p>
+				<p><?php sprintf($lang_site['Admin confirm delete type info'], pun_htmlspecialchars(shorttext_lang($type_name,$lang))); ?></p>
 				<p class="warntext"><?php echo $lang_site['Admin delete type warn']; ?></p>
 			</div>
 		</fieldset>
@@ -165,7 +165,7 @@ $titre_page = $lang_site['Pagename adm tuts types'];
 $module = 'admin';
 require './includes/top.php'; ?>
 <!-- Début partie principale -->
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=tutorials"><?php echo $lang_site['Tutorials']; ?></a> &gt; <a href="admin_tuts_types.php"><?php echo $lang_site['Types']; ?></a></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=tutorials"><?php echo $lang_site['Tutorials']; ?></a> &gt; <a href="admin_tuts_types.php"><?php echo $lang_site['Types']; ?></a></p>
 <h3><?php echo $lang_site['Title adm tuts types']; ?></h3>
 <?php echo $lang_site['Explain adm tuts types']; ?>
 <ul class="adm-tabs">

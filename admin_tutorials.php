@@ -97,7 +97,7 @@ if(isset($_GET['add_tut']))
 	$titre_page = $lang_site['Admin add tut'];
 	$module = 'admin';
 	require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <?php echo $lang_site['Admin add tut']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <?php echo $lang_site['Admin add tut']; ?></p>
 <h3><?php echo $lang_site['Admin add tut']; ?></h3>
 <form method="post" action="admin_tutorials.php?add_tut=true" enctype="multipart/form-data">
 	<p class="form">
@@ -187,7 +187,7 @@ elseif(isset($_GET['edit_tut']))
 		$titre_page = $lang_site['Admin add part'];
 		$module = 'admin';
 		require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <?php echo $lang_site['Admin add part']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <?php echo $lang_site['Admin add part']; ?></p>
 <h3><?php echo $lang_site['Admin add part']; ?></h3>
 <form method="post" action="admin_tutorials.php?edit_tut=<?php echo $tut_id; ?>&amp;add_part=<?php echo $tut_id; ?>">
 	<p class="form">
@@ -232,7 +232,7 @@ elseif(isset($_GET['edit_tut']))
 		$titre_page = $lang_site['Admin edit part'];
 		$module = 'admin';
 		require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <?php echo $lang_site['Admin edit part']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <?php echo $lang_site['Admin edit part']; ?></p>
 <h3><?php echo $lang_site['Admin edit part']; ?></h3>
 <form method="post" action="admin_tutorials.php?edit_tut=<?php echo $edit_tut; ?>&amp;edit_part=<?php echo $part_id; ?>" enctype="multipart/form-data">
 	<p class="form">
@@ -265,7 +265,7 @@ elseif(isset($_GET['edit_tut']))
 			$titre_page = $lang_site['Admin delete part'];
 			$module = 'admin';
 			require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <?php echo $lang_site['Admin delete part']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <?php echo $lang_site['Admin delete part']; ?></p>
 <h3><?php echo $lang_site['Admin delete tut part head']; ?></h3>
 <div class="box">
 	<form method="post" action="admin_tutorials.php?edit_tut=<?php echo $edit_tut; ?>&amp;del_part=<?php echo $part_id; ?>">
@@ -274,7 +274,7 @@ elseif(isset($_GET['edit_tut']))
 			<fieldset>
 				<legend><?php echo $lang_site['Admin confirm delete tut part subhead']; ?></legend>
 				<div class="infldset">
-					<p><?php printf($lang_site['Admin confirm delete tut part info'], pun_htmlspecialchars($text_name)); ?></p>
+					<p><?php sprintf($lang_site['Admin confirm delete tut part info'], pun_htmlspecialchars($text_name)); ?></p>
 					<p class="warntext"><?php echo $lang_site['Admin delete tut part warn']; ?></p>
 				</div>
 			</fieldset>
@@ -372,7 +372,7 @@ elseif(isset($_GET['edit_tut']))
 	$titre_page = $lang_site['Admin edit tut'];
 	$module = 'admin';
 	require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <?php echo $lang_site['Admin edit tut']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <?php echo $lang_site['Admin edit tut']; ?></p>
 <h3><?php echo $lang_site['Admin edit tut']; ?></h3>
 <?php
 	$text_result = $db->query('SELECT text_id, text_name, text_order, text_entryid, text_publishdate, text_lastupdate FROM tuts_texts WHERE text_entryid='.$edit_tut.' ORDER BY text_order') or error('Unable to get tutorial part data', __FILE__, __LINE__, $db->error());
@@ -502,7 +502,7 @@ elseif(isset($_GET['del_tut']))
 		$titre_page = $lang_site['Admin delete tut'];
 		$module = 'admin';
 		require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <?php echo $lang_site['Admin delete tut head']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <?php echo $lang_site['Admin delete tut head']; ?></p>
 <h3><?php echo $lang_site['Admin delete tut head']; ?></h3>
 <form method="post" action="admin_tutorials.php?del_tut=<?php echo $tut_id; ?>">
 	<div class="inform">
@@ -510,7 +510,7 @@ elseif(isset($_GET['del_tut']))
 		<fieldset>
 			<legend><?php echo $lang_site['Admin confirm delete tut subhead']; ?></legend>
 			<div class="infldset">
-				<p><?php printf($lang_site['Admin confirm delete tut info'], pun_htmlspecialchars($tut_name)); ?></p>
+				<p><?php sprintf($lang_site['Admin confirm delete tut info'], pun_htmlspecialchars($tut_name)); ?></p>
 				<p class="warntext"><?php echo $lang_site['Admin delete tut warn']; ?></p>
 			</div>
 		</fieldset>
@@ -552,7 +552,7 @@ elseif(isset($_GET['unapprove']))
 $titre_page = $lang_site['Pagename adm tutorials'];
 $module = 'admin';
 require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_tutorials.php"><?php echo $lang_site['Tutorials']; ?></a></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_tutorials.php"><?php echo $lang_site['Tutorials']; ?></a></p>
 <h3><?php echo $lang_site['Title adm tutorials']; ?></h3>
 <?php echo $lang_site['Explain adm tutorials']; ?>
 <ul class="adm-tabs">

@@ -101,8 +101,8 @@ if($module == 'cfg')
 			$form['site_desc'] = pun_linebreaks($form['site_desc']);
 		if($form['site_intro'] != '')
 			$form['site_intro'] = pun_linebreaks($form['site_intro']);
-		if($form['module_social'] != '')
-			$form['module_social'] = pun_linebreaks($form['module_social']);
+		if($form['social_links'] != '')
+			$form['social_links'] = pun_linebreaks($form['social_links']);
 
 	foreach ($form as $key => $input)
 	{
@@ -131,7 +131,7 @@ if($module == 'cfg')
 	$titre_page = $lang_site['Pagename adm cfg'];
 	$module = 'admin';
 	require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=cfg"><?php echo $lang_site['Settings']; ?></a></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=cfg"><?php echo $lang_site['Settings']; ?></a></p>
 <h3><?php echo $lang_site['Title adm cfg']; ?></h3>
 <?php echo $lang_site['Explain adm cfg']; ?>		
 <form method="post" action="admin.php?adm=cfg">
@@ -236,7 +236,7 @@ elseif($module == 'resources')
 	$titre_page = $lang_site['Pagename adm resources'];
 	$module = 'admin';
 	require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=resources"><?php echo $lang_site['Resources']; ?></a></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=resources"><?php echo $lang_site['Resources']; ?></a></p>
 <h3><?php echo $lang_site['Title adm resources']; ?></h3>
 <?php echo $lang_site['Explain adm res home']; ?>
 <ul class="adm-tabs">
@@ -268,7 +268,7 @@ elseif($module == 'tutorials')
 	$titre_page = $lang_site['Pagename adm tutorials'];
 	$module = 'admin';
 	require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=tutorials"><?php echo $lang_site['Tutorials']; ?></a></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=tutorials"><?php echo $lang_site['Tutorials']; ?></a></p>
 <h3><?php echo $lang_site['Title adm tutorials']; ?></h3>
 <?php echo $lang_site['Explain adm tuts home']; ?>
 <ul class="adm-tabs">
@@ -299,7 +299,7 @@ if (!defined('PUN_ADM_TUTS_HOME_LOADED'))
 $titre_page = $lang_site['Pagename adm home'];
 $module = 'admin';
 require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a></p>
 <h3><?php echo $lang_site['Title adm home']; ?></h3>
 <?php echo $lang_site['Explain adm home']; ?>
 <div class="adm-block block-left" id="adm-menu">

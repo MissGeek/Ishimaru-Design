@@ -70,7 +70,7 @@ if(isset($_GET['add_res']))
 	$titre_page = $lang_site['Admin add res'];
 	$module = 'admin';
 	require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_resources.php"><?php echo $lang_site['Resources']; ?></a> &gt; <?php echo $lang_site['Admin add res']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_resources.php"><?php echo $lang_site['Resources']; ?></a> &gt; <?php echo $lang_site['Admin add res']; ?></p>
 <h3><?php echo $lang_site['Admin add res']; ?></h3>
 <form method="post" action="admin_resources.php?add_res=true" enctype="multipart/form-data">
 	<p class="form">
@@ -187,7 +187,7 @@ elseif(isset($_GET['edit_res']))
 		$titre_page = $lang_site['Admin edit screen'];
 		$module = 'admin';
 		require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_resources.php"><?php echo $lang_site['Resources']; ?></a> &gt; <?php echo $lang_site['Admin edit screen']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_resources.php"><?php echo $lang_site['Resources']; ?></a> &gt; <?php echo $lang_site['Admin edit screen']; ?></p>
 <h3><?php echo $lang_site['Admin edit screen']; ?></h3>
 <form method="post" action="admin_resources.php?edit_res=<?php echo $edit_res; ?>&amp;edit_screen=<?php echo $edit_screen; ?>" enctype="multipart/form-data">
 	<p class="form">
@@ -230,7 +230,7 @@ elseif(isset($_GET['edit_res']))
 			$titre_page = $lang_site['Admin delete screen'];
 			$module = 'admin';
 			require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_resources.php"><?php echo $lang_site['Resources']; ?></a> &gt; <?php echo $lang_site['Admin delete screen head']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_resources.php"><?php echo $lang_site['Resources']; ?></a> &gt; <?php echo $lang_site['Admin delete screen head']; ?></p>
 <h3><?php echo $lang_site['Admin delete screen head']; ?></h3>
 <form method="post" action="admin_resources.php?edit_res=<?php echo $edit_res; ?>&amp;del_screen=<?php echo $del_screen; ?>">
 	<div class="inform">
@@ -238,7 +238,7 @@ elseif(isset($_GET['edit_res']))
 		<fieldset>
 			<legend><?php echo $lang_site['Admin confirm delete screen subhead']; ?></legend>
 			<div class="infldset">
-				<p><?php printf($lang_site['Admin confirm delete screen info'], pun_htmlspecialchars($screen_url)); ?></p>
+				<p><?php sprintf($lang_site['Admin confirm delete screen info'], pun_htmlspecialchars($screen_url)); ?></p>
 				<p class="warntext"><?php echo $lang_site['Admin delete screen warn']; ?></p>
 			</div>
 		</fieldset>
@@ -312,7 +312,7 @@ elseif(isset($_GET['edit_res']))
 		generate_admin_res_home_cache($lang);
 		site_redirect('admin_resources.php', $lang_site['Admin res edited redirect']);
 	}
-	if($_GET['edit_res'] == 'last');
+	if($_GET['edit_res'] === 'last')
 	{
 		$q = $db->query('SELECT MAX(rentry_id) FROM res_entries') or error('Unable to get last resource', __FILE__, __LINE__, $db->error());
 		$edit_res = $db->result($q);
@@ -331,7 +331,7 @@ elseif(isset($_GET['edit_res']))
 	$titre_page = $lang_site['Admin edit res'];
 	$module = 'admin';
 	require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_resources.php"><?php echo $lang_site['Resources']; ?></a> &gt; <?php echo $lang_site['Admin edit res']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_resources.php"><?php echo $lang_site['Resources']; ?></a> &gt; <?php echo $lang_site['Admin edit res']; ?></p>
 <h3><?php echo $lang_site['Admin edit res']; ?></h3>
 <form method="post" action="admin_resources.php?edit_res=<?php echo $edit_res; ?>" enctype="multipart/form-data">
 	<p class="form">
@@ -458,7 +458,7 @@ elseif(isset($_GET['del_res']))
 		$titre_page = $lang_site['Admin delete res'];
 		$module = 'admin';
 		require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_resources.php"><?php echo $lang_site['Resources']; ?></a> &gt; <?php echo $lang_site['Admin delete res head']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_resources.php"><?php echo $lang_site['Resources']; ?></a> &gt; <?php echo $lang_site['Admin delete res head']; ?></p>
 <h3><?php echo $lang_site['Admin delete res head']; ?></h3>
 <form method="post" action="admin_resources.php?del_res=<?php echo $res_id; ?>">
 	<div class="inform">
@@ -466,7 +466,7 @@ elseif(isset($_GET['del_res']))
 		<fieldset>
 			<legend><?php echo $lang_site['Admin confirm delete res subhead']; ?></legend>
 			<div class="infldset">
-				<p><?php printf($lang_site['Admin confirm delete res info'], pun_htmlspecialchars(shorttext_lang($res_name,$lang))); ?></p>
+				<p><?php sprintf($lang_site['Admin confirm delete res info'], pun_htmlspecialchars(shorttext_lang($res_name,$lang))); ?></p>
 				<p class="warntext"><?php echo $lang_site['Admin delete res warn']; ?></p>
 			</div>
 		</fieldset>
@@ -507,7 +507,7 @@ elseif(isset($_GET['unapprove']))
 $titre_page = $lang_site['Pagename adm resources'];
 $module = 'admin';
 require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_resources.php"><?php echo $lang_site['Resources']; ?></a></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_resources.php"><?php echo $lang_site['Resources']; ?></a></p>
 <h3><?php echo $lang_site['Title adm resources']; ?></h3>
 <?php echo $lang_site['Explain adm resources']; ?>
 <ul class="adm-tabs">

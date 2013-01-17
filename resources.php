@@ -29,7 +29,7 @@ if(isset($_GET['cat']))
 	$module = 'resources';
 	$titre_page = $lang_site['Pagename res for'] . $catname;
 	require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="resources.php"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="resources.php?cat=<?php echo $cur_cat['rcat_id']; ?>"><?php echo $catclear; ?></a></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="resources.php"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="resources.php?cat=<?php echo $cur_cat['rcat_id']; ?>"><?php echo $catclear; ?></a></p>
 <h3><?php echo $lang_site['Title resources for'].' '.$catname; ?></h3>
 <?php echo $catdesc; ?>
 <?php
@@ -77,7 +77,7 @@ elseif(isset($_GET['subcat']))
 		$module = 'resources';
 		$titre_page = $subname . $lang_site['Pagename for'] . $catname;
 		require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="resources.php"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="resources.php?cat=<?php echo $cur_subcat['rsub_catid']; ?>"><?php echo $catclear; ?></a> &gt; <a href="resources.php?subcat=<?php echo $cur_subcat['rsub_id']; ?>"><?php echo $catclear; ?></a></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="resources.php"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="resources.php?cat=<?php echo $cur_subcat['rsub_catid']; ?>"><?php echo $catclear; ?></a> &gt; <a href="resources.php?subcat=<?php echo $cur_subcat['rsub_id']; ?>"><?php echo $catclear; ?></a></p>
 <h3><?php echo order_by_lang($lang,$catclear,$subclear); ?></h3>
 <?php echo $subdesc;
 		$row = 0;
@@ -111,7 +111,7 @@ elseif(isset($_GET['subcat']))
 		$module = 'resources';
 		$titre_page = $subname . $lang_site['Pagename for'] . $catname;
 		require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="resources.php"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="resources.php?cat=<?php echo $cur_subcat['rsub_catid']; ?>"><?php echo $catclear; ?></a> &gt; <a href="resources.php?subcat=<?php echo $cur_subcat['rsub_id']; ?>"><?php echo $subclear; ?></a></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="resources.php"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="resources.php?cat=<?php echo $cur_subcat['rsub_catid']; ?>"><?php echo $catclear; ?></a> &gt; <a href="resources.php?subcat=<?php echo $cur_subcat['rsub_id']; ?>"><?php echo $subclear; ?></a></p>
 <h3><?php echo order_by_lang($lang,$catname,$subname); ?></h3>
 <?php echo $subdesc;
 		$row = 0;
@@ -175,7 +175,7 @@ elseif(isset($_GET['res']))
 	$titre_page = '['.$subname.'] '.$resname . $lang_site['Pagename for'] . $catname;
 	require './includes/top.php';
 	?>
-	<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="resources.php"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="resources.php?cat=<?php echo $res['rcat_id']; ?>"><?php echo $catclear; ?></a> &gt; <a href="resources.php?subcat=<?php echo $res['rsub_id']; ?>"><?php echo $subclear; ?></a> &gt; <a href="resources.php?id=<?php echo $res['rentry_id']; ?>"><?php echo $resname; ?></a></p>
+	<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="resources.php"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="resources.php?cat=<?php echo $res['rcat_id']; ?>"><?php echo $catclear; ?></a> &gt; <a href="resources.php?subcat=<?php echo $res['rsub_id']; ?>"><?php echo $subclear; ?></a> &gt; <a href="resources.php?id=<?php echo $res['rentry_id']; ?>"><?php echo $resname; ?></a></p>
 	<h3><?php echo '['.$subname.'] '.$resname . $lang_site['Pagename for'] . $catname; ?></h3>
 	<p class="style-preview"><a href="<?php echo $res['rscreen_url_full']; ?>"><img src="<?php echo $res['rscreen_url_small']; ?>" alt="<?php echo $lang_site['Preview'] . pun_htmlspecialchars($res['rsub_type']); ?>" /></a><br /><a class="download" href="<?php echo $res['rentry_download']; ?>"><?php echo $lang_site['Download'] . pun_htmlspecialchars($res['rsub_type']); ?></a></p>
 	<div class="style-desc"><?php echo $resdesc; ?></div>
@@ -209,7 +209,7 @@ if(!$db->num_rows($query))
 $titre_page = $lang_site['Pagename res home'];
 $module = 'resources';
 require './includes/top.php'; ?>
-<p class="crumbs"><?php echo$lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="resources.php"><?php echo $lang_site['Resources']; ?></a></p>
+<p class="crumbs"><?php echo$pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="resources.php"><?php echo $lang_site['Resources']; ?></a></p>
 <h3><?php echo $lang_site['Title resources']; ?></h3>
 <?php echo $lang_site['Explain res home'];
 
@@ -250,6 +250,8 @@ while($cur_cat = $db->fetch_assoc($query))
 		echo ' - '; //Séparateur entre les liens
 	if(!empty($cur_cat['rsub_id']))
 		echo '<a href="resources.php?subcat='.$cur_cat['rsub_id'].'">'.$subclear.'</a>';
+	else
+		echo '&nbsp;';
 }
 if($count > 0)
 	echo '</p></div>';

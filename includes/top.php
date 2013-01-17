@@ -62,7 +62,7 @@ function process_form(the_form)
 		  <li id="home"><a href="index.php"><?php echo $lang_site['Home']; ?></a></li>
 		  <?php if ($site_config['o_enable_res'] == '1'): ?><li id="resources"><a href="resources.php"><?php echo $lang_site['Resources']; ?></a></li><?php endif; ?>
 		  <?php if ($site_config['o_enable_tuts'] == '1'): ?><li id="tutorials"><a href="tutorials.php"><?php echo $lang_site['Tutorials']; ?></a></li><?php endif; ?>
-		  <li id="forum"><a href="fluxbb14/index.php"><?php echo $lang_site['Forum']; ?></a></li>
+		  <li id="forum"><a href="<?php echo PUN_ROOT.'index.php'; ?>"><?php echo $lang_site['Forum']; ?></a></li>
 		</ul>
 	  </div>
 	  <div id="menu">

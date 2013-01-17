@@ -195,9 +195,10 @@ function forum_news($str,$lang)
 
 function social_links($str,$lang)
 {
-	global $db, $lang_site, $pun_config, $site_config;
+	global $lang_site;
 
 	$elem = explode("\n\n",$str);
+	$block = '<p>';
 	foreach($elem as $value)
 	{
 		if(preg_match('#\['.$lang.'\|#',$value))
@@ -205,7 +206,6 @@ function social_links($str,$lang)
 			$value = substr(substr(trim($value),0,-1),4);
 
 			$count = 0;
-			$block = '<p>';
 			$items = explode("\n",$value);
 			foreach($items as $link)
 			{
@@ -216,8 +216,8 @@ function social_links($str,$lang)
 				if($count < count($items))
 					$block .= '&nbsp;';
 			}
-			$block .= '</p>';
 		}
 	}
+	$block .= '</p>';
 	return $block;	
 }

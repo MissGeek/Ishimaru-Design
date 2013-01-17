@@ -40,7 +40,7 @@ if(isset($_GET['add_page']))
 	$titre_page = $lang_site['Admin add page'];
 	$module = 'admin';
 	require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_pages.php"><?php echo $lang_site['Pages']; ?></a> &gt; <?php echo $lang_site['Admin add page']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_pages.php"><?php echo $lang_site['Pages']; ?></a> &gt; <?php echo $lang_site['Admin add page']; ?></p>
 <h3><?php echo $lang_site['Admin add page']; ?></h3>
 <form method="post" action="admin_pages.php?add_page=true">
 	<p class="form">
@@ -89,7 +89,7 @@ elseif(isset($_GET['edit_page']))
 	$titre_page = $lang_site['Admin edit page'];
 	$module = 'admin';
 	require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_page.php"><?php echo $lang_site['Pages']; ?></a> &gt; <?php echo $lang_site['Admin edit page']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_page.php"><?php echo $lang_site['Pages']; ?></a> &gt; <?php echo $lang_site['Admin edit page']; ?></p>
 <h3><?php echo $lang_site['Admin edit page']; ?></h3>
 <form method="post" action="admin_pages.php?edit_page=<?php echo $edit_page; ?>">
 	<p class="form">
@@ -123,7 +123,7 @@ elseif(isset($_GET['del_page']))
 		$titre_page = $lang_site['Admin delete page'];
 		$module = 'admin';
 		require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_pages.php"><?php echo $lang_site['Pages']; ?></a> &gt; <?php echo $lang_site['Admin delete pages']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_pages.php"><?php echo $lang_site['Pages']; ?></a> &gt; <?php echo $lang_site['Admin delete pages']; ?></p>
 <h3><?php echo $lang_site['Admin delete page head']; ?></h3>
 <form method="post" action="admin_pages.php?del_page=<?php echo $page_id; ?>">
 	<div class="inform">
@@ -131,7 +131,7 @@ elseif(isset($_GET['del_page']))
 		<fieldset>
 			<legend><?php echo $lang_site['Admin confirm delete page subhead']; ?></legend>
 			<div class="infldset">
-				<p><?php printf($lang_site['Admin confirm delete page info'], pun_htmlspecialchars($page_name)); ?></p>
+				<p><?php sprintf($lang_site['Admin confirm delete page info'], pun_htmlspecialchars($page_name)); ?></p>
 				<p class="warntext"><?php echo $lang_site['Admin delete page warn']; ?></p>
 			</div>
 		</fieldset>
@@ -145,7 +145,7 @@ elseif(isset($_GET['del_page']))
 $titre_page = $lang_site['Pagename adm pages'];
 $module = 'admin';
 require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_pages.php"><?php echo $lang_site['Pages']; ?></a></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_pages.php"><?php echo $lang_site['Pages']; ?></a></p>
 <h3><?php echo $lang_site['Title adm pages']; ?></h3>
 <?php echo $lang_site['Explain adm pages']; ?>
 <ul class="adm-tabs">

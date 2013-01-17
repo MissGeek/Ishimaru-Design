@@ -14,7 +14,7 @@ if(!defined('PUN_SITE'))
 }
 require PUN_ROOT.'include/common.php';
 // Load site language file
-require './includes/lang-fr.php';
+require './includes/lang-en.php';
 $lang = $lang_site['Lang'];
 
 //Load functions library

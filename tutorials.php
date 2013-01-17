@@ -107,7 +107,7 @@ $paginate .= '</p>';*/
 	$titre_page = order_by_lang($lang,$lang_site['Tutorials'],$catname);
 	$module = 'tutorials';
 	require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <a href="tutorials.php?cat=<?php echo $cat_id; ?>"><?php echo $catname; ?></a></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <a href="tutorials.php?cat=<?php echo $cat_id; ?>"><?php echo $catname; ?></a></p>
 <h3><?php echo order_by_lang($lang,$lang_site['Tutorials'],$catname); ?></h3>
 <?php echo '<p>'.$cur_cat['tcat_desc_'.$lang].'</p>';
 ?>
@@ -217,7 +217,7 @@ elseif(isset($_GET['tut']))
 	$titre_page = '['.$catname.'] '.pun_htmlspecialchars($tut['tentry_name']).' - '.$lang_site['Pagename view tutorial'];
 	$module = 'tutorials';
 	require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <a href="tutorials.php?cat=<?php echo $tut['tcat_id']; ?>"><?php echo $catclear; ?></a> &gt; <a href="tutorials.php?id=<?php echo $tut['tentry_id']; ?>"><?php echo pun_htmlspecialchars($tut['tentry_name']); ?></a></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <a href="tutorials.php?cat=<?php echo $tut['tcat_id']; ?>"><?php echo $catclear; ?></a> &gt; <a href="tutorials.php?id=<?php echo $tut['tentry_id']; ?>"><?php echo pun_htmlspecialchars($tut['tentry_name']); ?></a></p>
 <h3>[<?php echo $catname; ?>] <?php echo pun_htmlspecialchars($tut['tentry_name']); ?></h3>
 <div id="tuto-infos">
 	<p class="avatar">
@@ -436,7 +436,7 @@ elseif(isset($_GET['add_comment']))
 	$module = 'tutorials';
 	require './includes/top.php';
 ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <a href="tutorials.php?cat=<?php echo $tut['tcat_id']; ?>"><?php echo $catclear; ?></a> &gt; <a href="tutorials.php?tut=<?php echo $tut['tentry_id']; ?>"><?php echo pun_htmlspecialchars($tut['tentry_name']); ?></a> &gt; <a href="tutorials.php?add_comment=<?php echo $tut['tentry_id']; ?>"><?php echo $lang_site['Add comment']; ?></a></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <a href="tutorials.php?cat=<?php echo $tut['tcat_id']; ?>"><?php echo $catclear; ?></a> &gt; <a href="tutorials.php?tut=<?php echo $tut['tentry_id']; ?>"><?php echo pun_htmlspecialchars($tut['tentry_name']); ?></a> &gt; <a href="tutorials.php?add_comment=<?php echo $tut['tentry_id']; ?>"><?php echo $lang_site['Add comment']; ?></a></p>
 <h3>[<?php echo $catname; ?>] <?php echo pun_htmlspecialchars($tut['tentry_name']); ?></h3>
 <?php echo $lang_site['Explain add comment'];
 	if (!empty($errors))
@@ -594,7 +594,7 @@ elseif(isset($_GET['edit_comment']))
 	$module = 'tutorials';
 	require './includes/top.php';
 ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <a href="tutorials.php?cat=<?php echo $comment['tcat_id']; ?>"><?php echo $catclear; ?></a> &gt; <a href="tutorials.php?tut=<?php echo $comment['tentry_id']; ?>"><?php echo pun_htmlspecialchars($comment['tentry_name']); ?></a> &gt; <a href="tutorials.php?edit_comment=<?php echo $comment_id; ?>"><?php echo $lang_site['Edit comment']; ?></a></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <a href="tutorials.php?cat=<?php echo $comment['tcat_id']; ?>"><?php echo $catclear; ?></a> &gt; <a href="tutorials.php?tut=<?php echo $comment['tentry_id']; ?>"><?php echo pun_htmlspecialchars($comment['tentry_name']); ?></a> &gt; <a href="tutorials.php?edit_comment=<?php echo $comment_id; ?>"><?php echo $lang_site['Edit comment']; ?></a></p>
 <h3>[<?php echo $catname; ?>] <?php echo pun_htmlspecialchars($comment['tentry_name']); /* ?> &gt; <?php echo $lang_site['Edit comment']; */ ?></h3>
 
 <?php
@@ -712,7 +712,7 @@ elseif(isset($_GET['del_comment']))
 		$module = 'tutorials';
 		require './includes/top.php';
 ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <?php echo $lang_site['Delete comment']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <?php echo $lang_site['Delete comment']; ?></p>
 <div class="blockform">
 	<h3><span><?php echo $lang_site['Delete comment head']; ?></span></h3>
 	<div class="box">
@@ -761,7 +761,7 @@ elseif(isset($_GET['viewcomment']))
 	$titre_page = '['.pun_htmlspecialchars($tut['tcat_name_'.$lang]).'] '.pun_htmlspecialchars($tut['tentry_name']).' - '.$lang_site['Pagename view comments'];
 	$module = 'tutorials';
 	require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <a href="tutorials.php?cat=<?php echo $tut['tcat_id']; ?>"><?php echo $catclear; ?></a> &gt; <a href="tutorials.php?tut=<?php echo $tut['tentry_id']; ?>"><?php echo pun_htmlspecialchars($tut['tentry_name']); ?></a> &gt; <a href="tutorials.php?viewcomment=<?php echo $tut['tentry_id']; ?>"><?php echo $lang_site['Comments']; ?></a></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <a href="tutorials.php?cat=<?php echo $tut['tcat_id']; ?>"><?php echo $catclear; ?></a> &gt; <a href="tutorials.php?tut=<?php echo $tut['tentry_id']; ?>"><?php echo pun_htmlspecialchars($tut['tentry_name']); ?></a> &gt; <a href="tutorials.php?viewcomment=<?php echo $tut['tentry_id']; ?>"><?php echo $lang_site['Comments']; ?></a></p>
 <h3>[<?php echo $catname; ?>] <?php echo pun_htmlspecialchars($tut['tentry_name']); ?></h3>
 <?php
 	//Posting buttons.  For security reasons, only registered users can post comments
@@ -840,7 +840,7 @@ $titre_page = $lang_site['Pagename tut home'];
 $module = 'tutorials';
 require './includes/top.php';
 ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="tutorials.php"><?php echo $lang_site['Tutorials']; ?></a></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="tutorials.php"><?php echo $lang_site['Tutorials']; ?></a></p>
 <h3><?php echo $lang_site['Title tutorials']; ?></h3>
 <?php echo $lang_site['Explain tuts home'];
 $row = 0;

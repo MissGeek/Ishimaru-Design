@@ -24,7 +24,7 @@
 		}
 	}
 ?>
-			<p><?php echo printf($lang_site['Footer content'],$pun_config['o_board_title']); ?><br /><a href="#top"><?php echo $lang_site['Goto top']; ?></a></p>
+			<p><?php echo sprintf($lang_site['Footer content'],$pun_config['o_board_title']); ?><br /><a href="#top"><?php echo $lang_site['Goto top']; ?></a></p>
 <?php
 	// Display executed queries (if enabled)
 	if (defined('PUN_SHOW_QUERIES'))

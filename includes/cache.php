@@ -137,18 +137,25 @@ function generate_lastres_cache($lang)
 {
 	global $db, $lang_site, $site_config;
 
-	$query3 = $db->query('SELECT rentry_id, rentry_name, rentry_catid, rentry_subcatid, rsub_id, rsub_type, rcat_id, rcat_name, rcat_clearname, rcat_display, rentry_lastupdate FROM res_entries LEFT JOIN res_subcat ON rentry_subcatid=rsub_id LEFT JOIN res_cat ON rentry_catid=rcat_id WHERE rentry_publish=1 AND rentry_lang LIKE (\'%'.$lang.'%\') AND rentry_publish=1 ORDER BY rentry_lastupdate DESC LIMIT 0,'.$site_config['o_nb_res_home']);
+	$query3 = $db->query('SELECT rentry_id, rentry_name, rentry_catid, rentry_subcatid, rentry_lastupdate,
+								rsub_id, rsub_type,
+								rcat_id, rcat_name, rcat_clearname
+						FROM res_entries
+						LEFT JOIN res_subcat ON rentry_subcatid=rsub_id
+						LEFT JOIN res_cat ON rentry_catid=rcat_id
+						WHERE rentry_publish=1 AND rentry_lang LIKE (\'%'.$lang.'%\')
+						ORDER BY rentry_lastupdate DESC LIMIT 0,'.$site_config['o_nb_res_home']);
 	$fh = @fopen('./cache/cache_lastres-'.$lang.'.php', 'wb');
 	if (!$fh)
 		error('Unable to write last resource cache file to cache directory. Please make sure PHP has write access to the directory \'cache\' (outside FluxBB directory)', __FILE__, __LINE__);
 	$output = '<?php'."\n\n".'if (!defined(\'PUN\')) exit;'."\n".'define(\'PUN_LASTRES_LOADED\', 1);'."\n\n".'?>';
-	if($db->num_rows($query2) > 0)
+	if($db->num_rows($query3) > 0)
 	{
 		while($res = $db->fetch_assoc($query3))
-			$output .= "\n\t\t\t".'<li><a href="resources.php?id='.$res['rentry_id'].'>'.pun_htmlspecialchars(shorttext_lang($res['rentry_name'])).'</a> &raquo; <a href="resources.php?cat='.$res['rcat_id'].'">'.pun_htmlspecialchars(shorttext_lang($res['rcat_clearname'])).'</a></li>';
+			$output .= "\n\t\t\t".'<li>['.ucfirst($res['rsub_type']).'] <a href="resources.php?id='.$res['rentry_id'].'">'.pun_htmlspecialchars(shorttext_lang($res['rentry_name'],$lang)).'</a> &raquo; <a href="resources.php?cat='.$res['rcat_id'].'">'.pun_htmlspecialchars(shorttext_lang($res['rcat_clearname'],$lang)).'</a></li>';
 	}
 	else
-		$output .= "\n\t\t\t".'<li>'.$lang_site['No style'].'</li>';
+		$output .= "\n\t\t\t".'<li>'.$lang_site['No resource'].'</li>';
 	fwrite($fh, $output);
 	if (function_exists('apc_delete_file'))
 		@apc_delete_file('./cache/cache_lastres-'.$lang.'.php');

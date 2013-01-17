@@ -70,7 +70,7 @@ if(isset($_GET['add_cat']))
 	$titre_page = $lang_site['Admin add cat'];
 	$module = 'admin';
 	require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=resources"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="admin_res_cat.php"><?php echo $lang_site['Categories']; ?></a> &gt; <?php echo $lang_site['Admin add cat']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=resources"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="admin_res_cat.php"><?php echo $lang_site['Categories']; ?></a> &gt; <?php echo $lang_site['Admin add cat']; ?></p>
 <h3><?php echo $lang_site['Admin add cat']; ?></h3>
 <form method="post" action="admin_res_cat.php?add_cat=true" enctype="multipart/form-data">
 	<p class="form">
@@ -146,7 +146,7 @@ elseif(isset($_GET['add_sub']))
 	$titre_page = $lang_site['Admin add subcat'];
 	$module = 'admin';
 	require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=resources"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="admin_res_cat.php"><?php echo $lang_site['Categories']; ?></a> &gt; <?php echo $lang_site['Admin add subcat']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=resources"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="admin_res_cat.php"><?php echo $lang_site['Categories']; ?></a> &gt; <?php echo $lang_site['Admin add subcat']; ?></p>
 <h3><?php echo $lang_site['Admin add subcat']; ?></h3>
 <form method="post" action="admin_res_cat.php?add_sub=<?php echo $parent_cat; ?>">
 	<p class="form">
@@ -239,7 +239,7 @@ if(isset($_GET['edit_cat']))
 	$titre_page = $lang_site['Admin edit cat'];
 	$module = 'admin';
 	require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=resources"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="admin_res_cat.php"><?php echo $lang_site['Categories']; ?></a> &gt; <?php echo $lang_site['Admin edit cat']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=resources"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="admin_res_cat.php"><?php echo $lang_site['Categories']; ?></a> &gt; <?php echo $lang_site['Admin edit cat']; ?></p>
 <h3><?php echo $lang_site['Admin edit cat']; ?></h3>
 <form method="post" action="admin_res_cat.php?edit_cat=<?php echo $cur_cat['rcat_id']; ?>" enctype="multipart/form-data">
 	<p class="form">
@@ -319,7 +319,7 @@ elseif(isset($_GET['edit_sub']))
 	$titre_page = $lang_site['Admin edit subcat'];
 	$module = 'admin';
 	require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=resources"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="admin_res_cat.php"><?php echo $lang_site['Categories']; ?></a> &gt; <?php echo $lang_site['Admin edit subcat']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=resources"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="admin_res_cat.php"><?php echo $lang_site['Categories']; ?></a> &gt; <?php echo $lang_site['Admin edit subcat']; ?></p>
 <h3><?php echo $lang_site['Admin edit subcat']; ?></h3>
 <form method="post" action="admin_res_cat.php?edit_sub=<?php echo $cur_subcat['rsub_id']; ?>">
 	<p class="form">
@@ -383,7 +383,7 @@ if(isset($_GET['del_cat']))
 		$titre_page = $lang_site['Admin delete category'];
 		$module = 'admin';
 		require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=resources"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="admin_res_cat.php"><?php echo $lang_site['Categories']; ?></a> &gt; <?php echo $lang_site['Admin delete res cat head']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=resources"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="admin_res_cat.php"><?php echo $lang_site['Categories']; ?></a> &gt; <?php echo $lang_site['Admin delete res cat head']; ?></p>
 		<h3><?php echo $lang_site['Admin delete res cat head']; ?></h3>
 		<div class="box">
 			<form method="post" action="admin_res_cat.php?del_cat=<?php echo $cat_id; ?>">
@@ -392,7 +392,7 @@ if(isset($_GET['del_cat']))
 					<fieldset>
 						<legend><?php echo $lang_site['Admin confirm delete cat subhead']; ?></legend>
 						<div class="infldset">
-							<p><?php printf($lang_site['Admin confirm delete cat info'], pun_htmlspecialchars(shorttext_lang($cat_name,$lang))); ?></p>
+							<p><?php sprintf($lang_site['Admin confirm delete cat info'], pun_htmlspecialchars(shorttext_lang($cat_name,$lang))); ?></p>
 							<p class="warntext"><?php echo $lang_site['Admin delete res cat warn']; ?></p>
 						</div>
 					</fieldset>
@@ -434,7 +434,7 @@ elseif(isset($_GET['del_sub']))
 		$titre_page = $lang_site['Admin delete subcat'];
 		$module = 'admin';
 		require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=resources"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="admin_res_cat.php"><?php echo $lang_site['Categories']; ?></a> &gt; <?php echo $lang_site['Admin delete res subcat head']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=resources"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="admin_res_cat.php"><?php echo $lang_site['Categories']; ?></a> &gt; <?php echo $lang_site['Admin delete res subcat head']; ?></p>
 		<h3><?php echo $lang_site['Admin delete res subcat head']; ?></h3>
 		<div class="box">
 			<form method="post" action="admin_res_cat.php?del_sub=<?php echo $sub_id; ?>">
@@ -443,7 +443,7 @@ elseif(isset($_GET['del_sub']))
 					<fieldset>
 						<legend><?php echo $lang_site['Admin confirm delete subcat subhead']; ?></legend>
 						<div class="infldset">
-							<p><?php printf($lang_site['Admin confirm delete subcat info'], pun_htmlspecialchars(shorttext_lang($sub_name,$lang))); ?></p>
+							<p><?php sprintf($lang_site['Admin confirm delete subcat info'], pun_htmlspecialchars(shorttext_lang($sub_name,$lang))); ?></p>
 							<p class="warntext"><?php echo $lang_site['Admin delete res cat warn']; ?></p>
 						</div>
 					</fieldset>
@@ -477,7 +477,7 @@ if(isset($_POST['update_positions']))
 $titre_page = $lang_site['Pagename adm res cat'];
 $module = 'admin';
 require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=resources"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="admin_res_cat.php"><?php echo $lang_site['Categories']; ?></a></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=resources"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="admin_res_cat.php"><?php echo $lang_site['Categories']; ?></a></p>
 <h3><?php echo $lang_site['Title adm res cat']; ?></h3>
 <?php echo $lang_site['Explain adm res cat']; ?>
 <ul class="adm-tabs">

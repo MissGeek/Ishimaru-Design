@@ -496,4 +496,16 @@ function lang_priority($fr,$en,$lang)
 		return (isset($en)) ? $en : $fr;
 }
 
+function block_side($count)
+{
+	$result = $count % 2;
+	if($result == '1')
+		return 'block-right';
+	else
+		return 'block-left';
+}
+
+
+
+
 

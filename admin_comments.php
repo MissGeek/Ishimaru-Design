@@ -8,7 +8,7 @@ $lang = $lang_site['Lang'];
 $titre_page = $lang_site['Pagename adm comments'];
 $module = 'admin';
 require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $lang_site['Site name']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_comments.php"><?php echo $lang_site['Comments']; ?></a></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_comments.php"><?php echo $lang_site['Comments']; ?></a></p>
 <h3><?php echo $lang_site['Title adm comments']; ?></h3>
 <?php echo $lang_site['Explain adm comments']; ?>
 <ul class="adm-tabs">
