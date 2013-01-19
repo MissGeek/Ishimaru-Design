@@ -72,6 +72,7 @@ if(isset($_GET['add_cat']))
 	require './includes/top.php'; ?>
 <p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=tutorials"><?php echo $lang_site['Tutorials']; ?></a> &gt; <a href="admin_tuts_cat.php"><?php echo $lang_site['Categories']; ?></a> &gt; <?php echo $lang_site['Admin add cat']; ?></p>
 <h3><?php echo $lang_site['Admin add cat']; ?></h3>
+<?php echo $lang_site['Explain adm add cat']; ?>
 <form method="post" action="admin_tuts_cat.php?add_cat=true" enctype="multipart/form-data">
 	<p class="form">
 		<label for="catname"><?php echo $lang_site['Admin cat name']; ?><br /><input type="text" name="catname" id="catname" size="50" maxlength="64" value="{fr|Exemple de nom}||{en|Sample category name}" /></label><br />
@@ -116,6 +117,7 @@ elseif(isset($_GET['add_ver']))
 	require './includes/top.php'; ?>
 <p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=tutorials"><?php echo $lang_site['Tutorials']; ?></a> &gt; <a href="admin_tuts_cat.php"><?php echo $lang_site['Categories']; ?></a> &gt; <?php echo $lang_site['Admin add version']; ?></p>
 <h3><?php echo $lang_site['Admin add version']; ?></h3>
+<?php echo $lang_site['Explain adm add version']; ?>
 <form method="post" action="admin_tuts_cat.php?add_ver=<?php echo $parent_cat; ?>">
 	<p class="form">
 		<input type="hidden" name="parent_id" value="" />
@@ -200,6 +202,7 @@ if(isset($_GET['edit_cat']))
 	require './includes/top.php'; ?>
 <p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=tutorials"><?php echo $lang_site['Tutorials']; ?></a> &gt; <a href="admin_tuts_cat.php"><?php echo $lang_site['Categories']; ?></a> &gt; <?php echo $lang_site['Admin edit cat']; ?></p>
 <h3><?php echo $lang_site['Admin edit cat']; ?></h3>
+<?php echo $lang_site['Explain adm add cat']; ?>
 <form method="post" action="admin_tuts_cat.php?edit_cat=<?php echo $cur_cat['tcat_id']; ?>" enctype="multipart/form-data">
 	<p>
 		<input type="hidden" name="oldfile" value="<?php echo pun_htmlspecialchars($cur_cat['tcat_icon']); ?>" />

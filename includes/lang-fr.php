@@ -465,7 +465,7 @@ $lang_site = array(
 	'Title adm home' => 'Accueil de l’administration',
 	'Explain adm home' => '<p>Ici vous pouvez gérer les ressources, tutoriels, commentaires et pages publiées par vous ou vos membres, ainsi que configurer votre site.</p>',
 	'Title adm cfg' => 'Configuration du site',
-	'Explain adm cfg' => '<p>C’est à partir d’ici que vous pouvez configurer les modules de votre site.  Notez qu’une notation spéciale est utilisée pour assurer une gestion souple du bilinguisme.  Pour en apprendre plus sur son fonctionnement, consultez la page wiki consacrée à ce système sur le dépôt GitHub du site.</p>',
+	'Explain adm cfg' => '<p>C’est à partir d’ici que vous pouvez configurer les modules de votre site.  Notez qu’une notation spéciale est utilisée pour assurer une gestion souple du bilinguisme.  Pour en apprendre plus sur son fonctionnement, consultez <a href="https://github.com/MissGeek/Ishimaru-Design/wiki/Syst%C3%A8me-de-balisage-:-Guide-d%27utilisation">la page wiki consacrée à ce système sur le dépôt GitHub du site</a>.</p>',
 	'Title adm resources' => 'Administration des ressources',
 	'Explain adm res home' => '<p>Ici vous pouvez gérer tout ce qui est relatif aux ressources.</p>',
 	'Title adm res cat' => 'Administration des catégories des ressources',
@@ -482,5 +482,28 @@ $lang_site = array(
 	'Title adm pages' => 'Administration des pages',
 	'Explain adm pages' => '<p>Ici vous pouvez créer, modifier et supprimer les pages statiques pour afficher des informations qui seront peu enclins à des changements fréquents.  Les BBCodes sont autorisés.</p>',
 	'Title adm comments' => 'Administration des commentaires',
-	'Explain adm comments' => '<p>Ici vous pouvez modérer les commentaires, peu importe le tutoriel auquel les commentaires sont rattachés.  Vous pouvez utiliser le menu déroulant pour n’afficher les commentaires d’un tutoriel spécifique.</p>'
+	'Explain adm comments' => '<p>Ici vous pouvez modérer les commentaires, peu importe le tutoriel auquel les commentaires sont rattachés.  Vous pouvez utiliser le menu déroulant pour n’afficher les commentaires d’un tutoriel spécifique.</p>',
+	'Explain adm add cat' => '<p>Remplissez tous les champs pour créer une nouvelle catégorie.  Notez que la plupart des champs texte utilisent un système de balisage spécial. Pour apprendre à l’utiliser, consultez <a href="https://github.com/MissGeek/Ishimaru-Design/wiki/Syst%C3%A8me-de-balisage-:-Guide-d%27utilisation">la page wiki sur le dépôt GitHub d’Ishimaru Design</a>.</p>',
+	'Explain adm edit cat' => '<p>Notez que la plupart des champs texte utilisent un système de balisage spécial. Pour apprendre à l’utiliser, consultez <a href="https://github.com/MissGeek/Ishimaru-Design/wiki/Syst%C3%A8me-de-balisage-:-Guide-d%27utilisation">la page wiki sur le dépôt GitHub d’Ishimaru Design</a>.</p>',
+	'Explain adm add subcat' => '<p>Remplissez tous les champs pour créer une nouvelle sous-catégorie.  Notez que la plupart des champs texte utilisent un système de balisage spécial. Pour apprendre à l’utiliser, consultez <a href="https://github.com/MissGeek/Ishimaru-Design/wiki/Syst%C3%A8me-de-balisage-:-Guide-d%27utilisation">la page wiki sur le dépôt GitHub d’Ishimaru Design</a>.</p>',
+	'Explain adm edit subcat' => '<p>Notez que la plupart des champs texte utilisent un système de balisage spécial. Pour apprendre à l’utiliser, consultez <a href="https://github.com/MissGeek/Ishimaru-Design/wiki/Syst%C3%A8me-de-balisage-:-Guide-d%27utilisation">la page wiki sur le dépôt GitHub d’Ishimaru Design</a>.</p>',
+	'Explain adm add version' => '<p>Remplissez tous les champs pour créer une nouvelle version.</p>',
+	'Explain adm add type' => '<p>Remplissez tous les champs pour créer un nouveau type de tutoriel.  Notez que la plupart des champs texte utilisent un système de balisage spécial. Pour apprendre à l’utiliser, consultez <a href="https://github.com/MissGeek/Ishimaru-Design/wiki/Syst%C3%A8me-de-balisage-:-Guide-d%27utilisation">la page wiki sur le dépôt GitHub d’Ishimaru Design</a>.</p>',
+	'Explain adm edit type' => '<p>Notez que la plupart des champs texte utilisent un système de balisage spécial. Pour apprendre à l’utiliser, consultez <a href="https://github.com/MissGeek/Ishimaru-Design/wiki/Syst%C3%A8me-de-balisage-:-Guide-d%27utilisation">la page wiki sur le dépôt GitHub d’Ishimaru Design</a>.</p>',
+	'Explain adm add res' => '<p>Remplissez tous les champs pour créer une nouvelle ressource.  Notez que la plupart des champs texte utilisent un système de balisage spécial. Pour apprendre à l’utiliser, consultez <a href="https://github.com/MissGeek/Ishimaru-Design/wiki/Syst%C3%A8me-de-balisage-:-Guide-d%27utilisation">la page wiki sur le dépôt GitHub d’Ishimaru Design</a>.</p>',
+	'Explain adm edit res' => '<p>Notez que la plupart des champs texte utilisent un système de balisage spécial. Pour apprendre à l’utiliser, consultez <a href="https://github.com/MissGeek/Ishimaru-Design/wiki/Syst%C3%A8me-de-balisage-:-Guide-d%27utilisation">la page wiki sur le dépôt GitHub d’Ishimaru Design</a>.</p>',
+	'Explain adm add tut' => '<p>Remplissez tous les champs pour créer un nouveau tutoriel.</p><p><strong>IMPORTANT :</strong> Ne mettez pas la totalité du tutoriel dans le champs de description ! Après création du tutoriel, vous pourrez y ajouter des parties, qui sont faites exprès pour ça et qui permettent de diviser votre tutoriel en parties !</p>',
+	'Explain adm edit screen' => '<p>Notez que la plupart des champs texte utilisent un système de balisage spécial. Pour apprendre à l’utiliser, consultez <a href="https://github.com/MissGeek/Ishimaru-Design/wiki/Syst%C3%A8me-de-balisage-:-Guide-d%27utilisation">la page wiki sur le dépôt GitHub d’Ishimaru Design</a>.</p>',
+	'Explain adm add page' => '<p>Remplissez tous les champs pour créer une nouvelle page statique.  Vous pouvez utiliser le BBCode et les émoticônes, comme si vous étiez en train de poster sur le forum.</p>',
+	'Explain adm add part' => '<p>Remplissez tous les champs pour créer une nouvelle partie de tutoriel.  Vous pouvez utiliser du BBCode et des émoticônes pour la mise en forme de votre texte.</p>',
+	'Explain adm edit part' => '<p>Vous pouvez utiliser du BBCode et des émoticônes pour la mise en forme de votre texte.</p>'
 );
+
+
+
+
+
+
+
+
+

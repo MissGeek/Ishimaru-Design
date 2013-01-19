@@ -42,6 +42,7 @@ if(isset($_GET['add_page']))
 	require './includes/top.php'; ?>
 <p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_pages.php"><?php echo $lang_site['Pages']; ?></a> &gt; <?php echo $lang_site['Admin add page']; ?></p>
 <h3><?php echo $lang_site['Admin add page']; ?></h3>
+<?php echo $lang_site['Explain adm add page']; ?>
 <form method="post" action="admin_pages.php?add_page=true">
 	<p class="form">
 		<label for="pagetitle"><?php echo $lang_site['Admin page title']; ?><br /><input type="text" name="page_title" id="pagetitle" size="50" maxlength="128" /></label><br />
@@ -91,6 +92,7 @@ elseif(isset($_GET['edit_page']))
 	require './includes/top.php'; ?>
 <p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_page.php"><?php echo $lang_site['Pages']; ?></a> &gt; <?php echo $lang_site['Admin edit page']; ?></p>
 <h3><?php echo $lang_site['Admin edit page']; ?></h3>
+<?php echo $lang_site['Explain adm edit page']; ?>
 <form method="post" action="admin_pages.php?edit_page=<?php echo $edit_page; ?>">
 	<p class="form">
 		<label for="pagetitle"><?php echo $lang_site['Admin page title']; ?><br /><input type="text" name="page_title" id="pagetitle" size="50" maxlength="128" value="<?php echo pun_htmlspecialchars($cur_page['page_title']); ?>" /></label><br />

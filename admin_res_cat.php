@@ -72,6 +72,7 @@ if(isset($_GET['add_cat']))
 	require './includes/top.php'; ?>
 <p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=resources"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="admin_res_cat.php"><?php echo $lang_site['Categories']; ?></a> &gt; <?php echo $lang_site['Admin add cat']; ?></p>
 <h3><?php echo $lang_site['Admin add cat']; ?></h3>
+<?php echo $lang_site['Explain adm add cat']; ?>
 <form method="post" action="admin_res_cat.php?add_cat=true" enctype="multipart/form-data">
 	<p class="form">
 		<label for="catname"><?php echo $lang_site['Admin cat name']; ?><br /><input type="text" name="catname" id="catname" size="50" maxlength="64" value="{fr|Exemple de nom}||{en|Sample name}" /></label><br />
@@ -148,6 +149,7 @@ elseif(isset($_GET['add_sub']))
 	require './includes/top.php'; ?>
 <p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=resources"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="admin_res_cat.php"><?php echo $lang_site['Categories']; ?></a> &gt; <?php echo $lang_site['Admin add subcat']; ?></p>
 <h3><?php echo $lang_site['Admin add subcat']; ?></h3>
+<?php echo $lang_site['Explain adm add subcat']; ?>
 <form method="post" action="admin_res_cat.php?add_sub=<?php echo $parent_cat; ?>">
 	<p class="form">
 		<input type="hidden" name="parent_id" value="<?php echo $parent_cat; ?>" />
@@ -241,6 +243,7 @@ if(isset($_GET['edit_cat']))
 	require './includes/top.php'; ?>
 <p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=resources"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="admin_res_cat.php"><?php echo $lang_site['Categories']; ?></a> &gt; <?php echo $lang_site['Admin edit cat']; ?></p>
 <h3><?php echo $lang_site['Admin edit cat']; ?></h3>
+<?php echo $lang_site['Explain adm edit cat']; ?>
 <form method="post" action="admin_res_cat.php?edit_cat=<?php echo $cur_cat['rcat_id']; ?>" enctype="multipart/form-data">
 	<p class="form">
 		<input type="hidden" name="oldfile" value="<?php echo pun_htmlspecialchars($cur_cat['rcat_icon']); ?>" />
@@ -321,6 +324,7 @@ elseif(isset($_GET['edit_sub']))
 	require './includes/top.php'; ?>
 <p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=resources"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="admin_res_cat.php"><?php echo $lang_site['Categories']; ?></a> &gt; <?php echo $lang_site['Admin edit subcat']; ?></p>
 <h3><?php echo $lang_site['Admin edit subcat']; ?></h3>
+<?php echo $lang_site['Explain adm edit subcat']; ?>
 <form method="post" action="admin_res_cat.php?edit_sub=<?php echo $cur_subcat['rsub_id']; ?>">
 	<p class="form">
 		<input type="hidden" name="parent_id" value="<?php echo $cur_subcat['rsub_catid']; ?>" />

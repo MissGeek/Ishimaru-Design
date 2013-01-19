@@ -465,7 +465,7 @@ $lang_site = array(
 	'Title adm home' => 'Administration home',
 	'Explain adm home' => '<p>Here you can manage resources, tutorials, comments and pages published by you or your members, as well as configure your site.</p>',
 	'Title adm cfg' => 'Site settings',
-	'Explain adm cfg' => '<p>Here you can configure the modules of your site.  Take note that a special markup system is used to ensure a flexible management of multilanguages.  To learn more about how it works, consult the wiki page about this system on the site’s GitHub repository.</p>',
+	'Explain adm cfg' => '<p>Here you can configure the modules of your site.  Take note that a special markup system is used to ensure a flexible management of multilanguages.  To learn more about how it works, consult the <a href="https://github.com/MissGeek/Ishimaru-Design/wiki/Markup-system-:-User-guide">wiki page about this system on the site’s GitHub repository</a>.</p>',
 	'Title adm resources' => 'Resources admin',
 	'Explain adm res home' => '<p>Here you can manage everything that is related to resources.</p>',
 	'Title adm res cat' => 'Resource categories Admin',
@@ -482,5 +482,27 @@ $lang_site = array(
 	'Title adm pages' => 'Static pages admin',
 	'Explain adm pages' => '<p>Here you can add, edit and delete static pages in order to show infos that aren’t meant to change frequently.  BBCodes are allowed.</p>',
 	'Title adm comments' => 'Comments admin',
-	'Explain adm comments' => '<p>Here you can moderate comments whatever the tutorial that it’s related.  You can use the drop-down menu to show only comments from a specific tutorial.</p>'
+	'Explain adm comments' => '<p>Here you can moderate comments whatever the tutorial that it’s related.  You can use the drop-down menu to show only comments from a specific tutorial.</p>',
+	'Explain adm add cat' => '<p>Fill in all fields to create a new category. Take note that most text fields use a special markup system. To learn how to use it, see <a href="https://github.com/MissGeek/Ishimaru-Design/wiki/Markup-system-:-User-guide">this wiki page on Ishimaru Design’s Github repo</a>.</p>',
+	'Explain adm edit cat' => '<p>Take note that most text fields use a special markup system. To learn how to use it, see <a href="https://github.com/MissGeek/Ishimaru-Design/wiki/Markup-system-:-User-guide">this wiki page on Ishimaru Design’s Github repo</a>.</p>',
+	'Explain adm add subcat' => '<p>Fill in all fields to create a new subcategory. Take note that most text fields use a special markup system. To learn how to use it, see <a href="https://github.com/MissGeek/Ishimaru-Design/wiki/Markup-system-:-User-guide">this wiki page on Ishimaru Design’s Github repo</a>.</p>',
+	'Explain adm edit subcat' => '<p>Take note that most text fields use a special markup system. To learn how to use it, see <a href="https://github.com/MissGeek/Ishimaru-Design/wiki/Markup-system-:-User-guide">this wiki page on Ishimaru Design’s Github repo</a>.</p>',
+	'Explain adm add version' => '<p>Fill in all fields to create a new version.</p>',
+	'Explain adm add type' => '<p>Fill in all fields to create a new tutorial type. Take note that most text fields use a special markup system. To learn how to use it, see <a href="https://github.com/MissGeek/Ishimaru-Design/wiki/Markup-system-:-User-guide">this wiki page on Ishimaru Design’s Github repo</a>.</p>',
+	'Explain adm edit type' => '<p>Take note that most text fields use a special markup system. To learn how to use it, see <a href="https://github.com/MissGeek/Ishimaru-Design/wiki/Markup-system-:-User-guide">this wiki page on Ishimaru Design’s Github repo</a>.</p>',
+	'Explain adm add res' => '<p>Fill in all fields to create a new resource. Take note that most text fields use a special markup system. To learn how to use it, see <a href="https://github.com/MissGeek/Ishimaru-Design/wiki/Markup-system-:-User-guide">this wiki page on Ishimaru Design’s Github repo</a>.</p>',
+	'Explain adm edit res' => '<p>Take note that most text fields use a special markup system. To learn how to use it, see <a href="https://github.com/MissGeek/Ishimaru-Design/wiki/Markup-system-:-User-guide">this wiki page on Ishimaru Design’s Github repo</a>.</p>',
+	'Explain adm add tut' => '<p>Fill in all fields to create a new tutorial.</p><p><strong>IMPORTANT :</strong> Don’t write the whole tutorial in the description field ! Once your tutorial created, you will be able to add parts that have the purpose to contain your tutorial body and to divide your tutorial into several parts !</p>',
+	'Explain adm edit screen' => '<p>Take note that most text fields use a special markup system. To learn how to use it, see <a href="https://github.com/MissGeek/Ishimaru-Design/wiki/Markup-system-:-User-guide">this wiki page on Ishimaru Design’s Github repo</a>.</p>',
+	'Explain adm add page' => '<p>Fill in all fields to create a new static page.  You can use BBCode and smilies, as if you were posting on the forum.</p>',
+	'Explain adm add part' => '<p>Fill in all fields to create a new tutorial part.  You can use BBCode and smilies to format your text.</p>',
+	'Explain adm edit part' => '<p>You can use BBCode and smilies to format your text.</p>'
 );
+
+
+
+
+
+
+
+

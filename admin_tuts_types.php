@@ -38,6 +38,7 @@ if(isset($_GET['add_type']))
 	require './includes/top.php'; ?>
 <p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=tutorials"><?php echo $lang_site['Tutorials']; ?></a> &gt; <a href="admin_tuts_types.php"><?php echo $lang_site['Types']; ?></a> &gt; <?php echo $lang_site['Admin add type']; ?></p>
 <h3><?php echo $lang_site['Admin add type']; ?></h3>
+<?php echo $lang_site['Explain adm add type']; ?>
 <form method="post" action="admin_tuts_types.php?add_type=true">
 	<p class="form">
 		<label for="typename"><?php echo $lang_site['Admin type name']; ?><br /><input type="text" name="typename" id="typename" size="50" maxlength="64" value="{fr|Exemple de type}||{en|Sample type}" /></label>
@@ -91,6 +92,7 @@ if(isset($_GET['edit_type']))
 	require './includes/top.php'; ?>
 <p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin.php?adm=tutorials"><?php echo $lang_site['Tutorials']; ?></a> &gt; <a href="admin_tuts_types.php"><?php echo $lang_site['Types']; ?></a> &gt; <?php echo $lang_site['Admin edit type']; ?></p>
 <h3><?php echo $lang_site['Admin edit type']; ?></h3>
+<?php echo $lang_site['Explain adm edit type']; ?>
 <form method="post" action="admin_tuts_types.php?edit_type=<?php echo $edit_type; ?>">
 	<p>
 		<label for="typename"><?php echo $lang_site['Admin type name']; ?><br /><input type="text" value="<?php echo pun_htmlspecialchars($cur_type['type_name']); ?>" name="typename" id="typename" size="50" maxlength="32" /></label>

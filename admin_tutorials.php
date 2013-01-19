@@ -99,6 +99,7 @@ if(isset($_GET['add_tut']))
 	require './includes/top.php'; ?>
 <p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <?php echo $lang_site['Admin add tut']; ?></p>
 <h3><?php echo $lang_site['Admin add tut']; ?></h3>
+<?php echo $lang_site['Explain adm add tut']; ?>
 <form method="post" action="admin_tutorials.php?add_tut=true" enctype="multipart/form-data">
 	<p class="form">
 		<label for="tutname"><?php echo $lang_site['Admin tut name']; ?><br /><input type="text" name="tut_name" id="tutname" size="50" maxlength="128" /></label><br />
@@ -189,6 +190,7 @@ elseif(isset($_GET['edit_tut']))
 		require './includes/top.php'; ?>
 <p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <?php echo $lang_site['Admin add part']; ?></p>
 <h3><?php echo $lang_site['Admin add part']; ?></h3>
+<?php echo $lang_site['Explain adm add part']; ?>
 <form method="post" action="admin_tutorials.php?edit_tut=<?php echo $tut_id; ?>&amp;add_part=<?php echo $tut_id; ?>">
 	<p class="form">
 		<label for="partname"><?php echo $lang_site['Admin part name']; ?><br /><input type="text" name="part_name" id="partname" size="50" maxlength="128" /></label><br />
@@ -234,6 +236,7 @@ elseif(isset($_GET['edit_tut']))
 		require './includes/top.php'; ?>
 <p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_tutorials.php"><?php echo $lang_site['Tutorials']; ?></a> &gt; <?php echo $lang_site['Admin edit part']; ?></p>
 <h3><?php echo $lang_site['Admin edit part']; ?></h3>
+<?php echo $lang_site['Explain adm edit part']; ?>
 <form method="post" action="admin_tutorials.php?edit_tut=<?php echo $edit_tut; ?>&amp;edit_part=<?php echo $part_id; ?>" enctype="multipart/form-data">
 	<p class="form">
 		<label for="partname"><?php echo $lang_site['Admin part name']; ?><br /><input type="text" name="part_name" id="partname" size="50" maxlength="128" value="<?php echo pun_htmlspecialchars($cur_part['text_name']); ?>" /></label><br />

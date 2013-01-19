@@ -72,6 +72,7 @@ if(isset($_GET['add_res']))
 	require './includes/top.php'; ?>
 <p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_resources.php"><?php echo $lang_site['Resources']; ?></a> &gt; <?php echo $lang_site['Admin add res']; ?></p>
 <h3><?php echo $lang_site['Admin add res']; ?></h3>
+<?php echo $lang_site['Explain adm add res']; ?>
 <form method="post" action="admin_resources.php?add_res=true" enctype="multipart/form-data">
 	<p class="form">
 		<label for="resname"><?php echo $lang_site['Admin res name']; ?><br /><input type="text" name="resname" id="resname" size="50" maxlength="128" value="{fr|Exemple de nom de ressource}||{en|Sample resource name}" /></label><br />
@@ -189,6 +190,7 @@ elseif(isset($_GET['edit_res']))
 		require './includes/top.php'; ?>
 <p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_resources.php"><?php echo $lang_site['Resources']; ?></a> &gt; <?php echo $lang_site['Admin edit screen']; ?></p>
 <h3><?php echo $lang_site['Admin edit screen']; ?></h3>
+<?php echo $lang_site['Explain adm edit screen']; ?>
 <form method="post" action="admin_resources.php?edit_res=<?php echo $edit_res; ?>&amp;edit_screen=<?php echo $edit_screen; ?>" enctype="multipart/form-data">
 	<p class="form">
 		<input type="hidden" name="MAX_FILE_SIZE" value="2097152" /><!-- 2 Mio -->
@@ -333,6 +335,7 @@ elseif(isset($_GET['edit_res']))
 	require './includes/top.php'; ?>
 <p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_resources.php"><?php echo $lang_site['Resources']; ?></a> &gt; <?php echo $lang_site['Admin edit res']; ?></p>
 <h3><?php echo $lang_site['Admin edit res']; ?></h3>
+<?php echo $lang_site['Explain adm edit res']; ?>
 <form method="post" action="admin_resources.php?edit_res=<?php echo $edit_res; ?>" enctype="multipart/form-data">
 	<p class="form">
 		<label for="resname"><?php echo $lang_site['Admin res name']; ?><br /><input type="text" name="resname" id="resname" size="50" maxlength="128" value="<?php echo pun_htmlspecialchars($res['rentry_name']); ?>" /></label><br />
