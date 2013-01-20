@@ -298,10 +298,6 @@ elseif(isset($_GET['edit_res']))
 			$disp_lang[] = 'en';
 
 		$download = pun_trim($_POST['download']);
-//		exit($db->escape($download));
-
-//		if($download = '')
-//			site_msg($lang_site['No download link']);
 
 		$sql_lang = implode(',',$disp_lang);
 		$sql = 'UPDATE res_entries SET rentry_name=\''.$db->escape($resname).'\',rentry_shortdesc=\''.$db->escape($resshort).'\',rentry_desc=\''.$db->escape($resdesc).'\',rentry_authornotes=\''.$db->escape($resnotes).'\', rentry_lang=\''.$db->escape($sql_lang).'\',rentry_download=\''.$db->escape($download).'\',rentry_lastupdate='.time().' WHERE rentry_id='.$edit_res;

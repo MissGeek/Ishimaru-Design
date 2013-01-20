@@ -1,7 +1,19 @@
 <?php
 //Librairie regroupant les fonctions pour le site
 
-// Certains textes sont inversés selon la langue
+//Gestion du cache, pour économiser des requêtes.  On vérifie si le fichier existe et n'est pas expiré et après, on retourne un booléen
+/*function check_cache($file,$delay)
+{
+	//On fait en sorte que si la valeur entrée est 0, on mets un délai d'un an pour que le cache ne soit rafraîchi qu'au besoin, via une fonction dans l'ACP
+	$expire = time() - ($delay > 0)? $delay : 31536000;
+	//Vérification si le fichier de cache est à jour
+	if(file_exists($file) && filemtime($file) > $expire)
+	{
+		return true;
+	}
+	else return false;
+}*/
+
 function order_by_lang($lang,$param1,$param2)
 {
 	if($lang == 'fr')
@@ -33,6 +45,7 @@ function rename_file($type,$file,$mini=false)
 		$filepath = './img/'.$type.'/'.$file;
 	return $filepath;
 }
+
 
 //Fonction pour la création des miniatures selon le type
 function create_thumb($file)
@@ -72,7 +85,17 @@ function get_image_link($file,$mini=false)
 //Fonction pour enregistrer la miniature
 function save_thumb($image,$file,$folder)
 {
+/*	if(preg_match('#png$#',$file)) //On ne veut appliquer l'alpha que sur les .png
+	{
+		$back = imagecolorallocatealpha($image, 255, 255, 255, 0);
+//		$border = imagecolorallocate($image, 0, 0, 0);
+		imagefilledrectangle($image, 0, 0, $size - 1, $size - 1, $back);
+//		imagerectangle($image, 0, 0, $size - 1, $size - 1, $border);
+	}*/
 	$path = explode('/',$file); //Coupe le chemin complet à partir des slash.  Ex : ../mg/gimp/fichier.png = 0/1/2/3
+/*	if($folder == 'res-cat-icons' || $folder == 'tuts-cat-icons')
+		$link = './img/'.$path[2].'/'.$path[3];*/
+/*	elseif*/
 	if(preg_match('#res#',$folder))
 		$link = './img/'.$path[2].'/thumbs/'.$path[3];
 	elseif($folder == 'tut')
@@ -83,6 +106,7 @@ function save_thumb($image,$file,$folder)
 		$save = imagegif($image,$link);
 	elseif(preg_match('#png$#',$file))
 		$save = imagepng($image,$link);
+//	imagedestroy($image);
 	return $save;
 }
 
@@ -129,6 +153,7 @@ function remove_file($file,$folder)
 	elseif(preg_match('#res#',$folder))
 	{
 		$pieces = explode('/',$file); //Découpe le chemin avec les slashes.  Ex : ../img/gimp/fichier.png = 0/1/2/3
+//		$parts = explode('.',$pieces[3]); //Découpe le nom du fichier pour séparer le nom de l'extension.  Ex : fichier.png = 0.1
 
 		$delete1 = @unlink('./img/'.$folder.'/'.$pieces[3]);
 		$delete2 = @unlink('./img/'.$folder.'/thumbs/'.$pieces[3]);
@@ -163,6 +188,7 @@ function clear_dir($dossier)
 	if (!$r) return false;
 	return true;
 }
+
 
 /*Functions for checking tutorial cat and versior */
 function get_cat_version($id)
@@ -303,6 +329,13 @@ function site_confirm_referrer($script, $error_msg = false)
 	if ($referrer['host'] != $valid['host'] || $referrer['path'] != $valid['path'])
 		site_msg($error_msg ? $error_msg : $lang_site['Bad referrer']);
 }
+
+//Pour les commentaires - pour permettre la modération depuis la page publique ET la page admin
+/*function mod_comments_referrer($url,$page)
+{
+	if($page == 'admin')
+		return site_confirm_referrer(
+}*/
 
 //Adaptation of FluxBB's message() function for ishimaru-design
 function site_msg($message)
@@ -471,4 +504,8 @@ function block_side($count)
 	else
 		return 'block-left';
 }
+
+
+
+
 

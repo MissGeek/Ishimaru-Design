@@ -66,7 +66,7 @@ if(isset($_GET['cat']))
 		}
 	}
 	// To avoid 10km-long pages, we'll paginate them
-	define('NB_TUTS',5);
+	define('NB_TUTS',$site_config['o_tuts_per_page']);
 	if(isset($_GET['p']))
 	{
 		$page = intval($_GET['p']);
@@ -100,9 +100,6 @@ $count = $db->query($count_sql) or error('Unable to fetch tutorial data', __FILE
 $nb_tuts = $db->result($count);
 $nb_pages = ceil(($nb_tuts - 1) / NB_TUTS);
 $paginate = '<p class="paginate">'.$lang_site['Pages'].':'.site_paginate($nb_pages, $page, 'tutorials.php?cat='.$cat_id);;
-/*for($i = 1; $i <= $nb_pages; $i++)
-	$paginate .= ' <a href="tutorials.php?cat='.$cat_id.'&amp;page='.$i . $url.'">'.$i.'</a>';
-$paginate .= '</p>';*/
 
 	$titre_page = order_by_lang($lang,$lang_site['Tutorials'],$catname);
 	$module = 'tutorials';
@@ -187,6 +184,7 @@ elseif(isset($_GET['tut']))
 	if($tut_id < 1)
 		site_msg($lang_site['Bad request']);
 
+	$print = 'true';
 	$lang = $lang_site['Lang'];
 	$filter = !$pun_user['is_admmod'] ? ' AND tentry_publish=1' : '';
 	$sql = 'SELECT tentry_id, tentry_name, tentry_lang, tentry_desc, tentry_author, tentry_publishdate, tentry_lastupdate, tentry_comments, tentry_catid, tentry_version, tentry_level, tentry_type, id, username, tcat_id, tcat_name, tcat_clearname, version_id, version_name, type_id, type_name FROM tuts_entries LEFT JOIN tuts_cat ON tentry_catid=tcat_id LEFT JOIN '.$db->prefix.'users ON tentry_author=id LEFT JOIN tuts_versions ON tentry_version=version_id LEFT JOIN tuts_type ON tentry_type=type_id WHERE tentry_id='.$tut_id.' AND tentry_lang=\''.$lang.'\''.$filter;
@@ -502,7 +500,6 @@ elseif(isset($_GET['edit_comment']))
 		if($check !== $_GET['csrf'])
 			site_msg($lang['Bad request']);
 	}
-//				confirm_referrer('tutorials.php?tut='.$tut_id.'&amp;mode=writecomment');
 
 	if(isset($_POST['form-sent']))
 	{
@@ -526,13 +523,8 @@ elseif(isset($_GET['edit_comment']))
 		$orig_message = pun_linebreaks(pun_trim($_POST['content']));
 
 		$errors = array();
-/*		if (strlen($orig_message) > PUN_MAX_POSTSIZE)
-			$errors[] = sprintf($lang_post['Too long message'], forum_number_format(PUN_MAX_POSTSIZE));*/
 		/*else*/ if ($pun_config['p_message_all_caps'] == '0' && is_all_uppercase($orig_message) && !$pun_user['is_admmod'])
 			$errors[] = $lang_site['All caps message'];
-
-/*		if ($pun_config['o_censoring'] == '1')
-			$censored_msg = pun_trim(censor_words($orig_message));*/
 
 		if ($pun_config['p_message_bbcode'] == '1')
 		{
@@ -541,8 +533,6 @@ elseif(isset($_GET['edit_comment']))
 		}
 		else
 			$parsed_msg = $orig_message;
-/*		if($parsed_msg == '')
-			site_msg($lang_site['Empty comment']);*/
 		if (empty($errors))
 		{
 			if ($parsed_msg == '')
@@ -580,12 +570,9 @@ elseif(isset($_GET['edit_comment']))
 
 	if(!$db->num_rows($query))
 		site_msg($lang_site['Comment not found']);
-//	{
-//	list($commid,$commentry,$commtext,$commauthor,$catid,$catname,$catclear,$tutid,$tutname) = $db->fetch_assoc($query);
 	$comment = $db->fetch_assoc($query);
 	if(!$pun_user['is_admmod'] && $pun_user['id'] != $commauthor)
 		site_msg($lang_site['No permission']);
-//	{
 
 	$catname = pun_htmlspecialchars(shorttext_lang($comment['tcat_name'],$lang));
 	$catclear = pun_htmlspecialchars(shorttext_lang($comment['tcat_clearname'],$lang));
@@ -648,12 +635,6 @@ elseif(isset($_GET['edit_comment']))
 	<p class="buttons"><input type="submit" name="save" value="<?php echo $lang_site['Submit']; ?>" /> <input type="submit" name="preview" value="<?php echo $lang_site['Preview post']; ?>" /> <a href="javascript:history.go(-1)"><?php echo $lang_site['Go back']; ?></a></p>
 </form>
 <?php require './includes/bottom.php';
-/*		}
-		else
-			echo '<p class="error">'.$lang_site['Cannot edit'].'</p>';
-	}
-	else
-		echo '<p class="error">'.$lang['Comment not found'].'</p>';*/
 }
 /* Supprimer un commentaire */
 elseif(isset($_GET['del_comment']))

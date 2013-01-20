@@ -5,7 +5,6 @@
 	<meta name="description" content="<?php echo pun_htmlspecialchars(shorttext_lang($site_config['o_site_desc'],$lang,true)); ?>" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" href="./style/style.css" media="screen" type="text/css" title="design v6" />
-	<?php if($print === 'true'): ?><link rel="stylesheet" href="./style/print.css" media="print" type="text/css" /><?php endif; ?>
 <?php
 if(isset($wcomment))
 {

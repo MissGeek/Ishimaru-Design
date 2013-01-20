@@ -87,14 +87,6 @@ $count = 0;
 if($site_config['o_enable_intro'] == '1'): ?>
 <div class="home-block block-left" id="about">
 	<h4><?php echo pun_htmlspecialchars($pun_config['o_board_title']).$lang_site['About site']; ?></h4>
-	<!-- dl>
-		<dt><?php echo $lang_site['About resources']; ?></dt>
-		<dd><?php echo $lang_site['About resources explain']; ?></dd>
-		<dt><?php echo $lang_site['About tutorials']; ?></dt>
-		<dd><?php echo $lang_site['About tutorials explain']; ?></dd>
-		<dt><?php echo $lang_site['About community']; ?></dt>
-		<dd><?php echo $lang_site['About community explain']; ?></dd>
-	</dl -->
 	<?php echo intro_module($site_config['o_site_intro'],$lang); ?><?php $count++; ?>
 </div><?php endif; ?><?php if($site_config['o_enable_news'] == '1'): ?><div class="home-block<?php echo ' '.block_side($count); ?>" id="latest-news">
 	<h4><?php echo $lang_site['Latest news']; ?></h4>

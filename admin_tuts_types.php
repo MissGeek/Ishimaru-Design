@@ -21,17 +21,10 @@ if(isset($_GET['add_type']))
 		if($typename == '')
 			site_msg($lang_site['Admin no typename']);
 
-/*		$catids = array_filter($_POST['typecat'],'is_numeric');
-		if(empty($catids))
-			site_msg($lang_site['Admin no typecat']);*/
-
 		$db->query('INSERT INTO tuts_type(type_id,type_name) VALUES(\'\',\''.$db->escape($typename).'\')') or error('Unable to add tutorial type', __FILE__, __LINE__, $db->error());
 		site_redirect('admin_tuts_types.php', $lang_site['Admin type added redirect']);
 	}
 	$lang = $lang_site['Lang'];
-//	$c = $db->query('SELECT tcat_id, tcat_name_'.$lang.' FROM tuts_cat ORDER BY tcat_id') or error('Unable to get category data', __FILE__, __LINE__, $db->error());
-//	if($db->num_rows($c) < 1)
-//		site_msg($lang_site['No categories']);
 
 	$titre_page = $lang_site['Admin add type'];
 	$module = 'admin';
@@ -44,17 +37,6 @@ if(isset($_GET['add_type']))
 		<label for="typename"><?php echo $lang_site['Admin type name']; ?><br /><input type="text" name="typename" id="typename" size="50" maxlength="64" value="{fr|Exemple de type}||{en|Sample type}" /></label>
 	</p>
 	<hr class="sep" />
-	<?php /*p class="form">
-		<strong class="label"><?php echo $lang_site['Categories']; ?></strong> 
-	<?php
-	while ($cur_cat = $db->fetch_assoc($c))
-	{
-		?>
-		<label for="cat_<?php echo $cur_cat['tcat_id']; ?>"><?php echo $cur_cat['tcat_name_'.$lang]; ?></label> <input type="checkbox" name="typecat[]" value="<?php echo $cur_cat['tcat_id']; ?>" id="cat_<?php echo $cur_cat['tcat_id']; ?>" /> &nbsp; 
-		<?php
-	}
-	?>
-	</p */ ?>
 	<p class="submit"><input type="submit" name="save" value="<?php echo $lang_site['Save changes']; ?>" /> &nbsp; <a href="javascript:history.go(-1)"><?php echo $lang_site['Go back']; ?></a></p>
 </form>
 <?php require './includes/bottom.php';
@@ -73,14 +55,10 @@ if(isset($_GET['edit_type']))
 		if($typename == '')
 			site_msg($lang_site['Admin no typename']);
 
-//		$catids = array_filter($_POST['typecat'],'is_numeric');
-//		if(count($catids) < 1)
-//			site_msg($lang_site['Admin no typecat']);
-
 		$db->query('UPDATE tuts_type SET type_name=\''.$db->escape($typename).'\' WHERE type_id='.$edit_type) or error('Unable to update tutorial type', __FILE__, __LINE__, $db->error());
 		site_redirect('admin_tuts_types.php', $lang_site['Admin type edited redirect']);
 	}
-	//fetch cat info
+	//fetch type info
 	$result = $db->query('SELECT type_id, type_name FROM tuts_type WHERE type_id='.$edit_type) or error('Unable to fetch tutorial type data', __FILE__, __LINE__, $db->error());
 	if(!$db->num_rows($result))
 		site_msg($lang_site['Bad request']);
@@ -98,22 +76,6 @@ if(isset($_GET['edit_type']))
 		<label for="typename"><?php echo $lang_site['Admin type name']; ?><br /><input type="text" value="<?php echo pun_htmlspecialchars($cur_type['type_name']); ?>" name="typename" id="typename" size="50" maxlength="32" /></label>
 	</p>
 	<hr class="sep" />
-	<?php /*p class="form">
-		<strong class="label"><?php echo $lang_site['Categories']; ?></strong> 
-	<?php
-	$lang = $lang_site['Lang'];
-	$c = $db->query('SELECT tcat_id, tcat_name_'.$lang.' FROM tuts_cat ORDER BY tcat_id') or error('Unable to get category data', __FILE__, __LINE__, $db->error());
-
-	$typecat = explode(',',$cur_type['type_cat']);
-
-	while ($cur_cat = $db->fetch_assoc($c))
-	{
-		?>
-		<label for="cat_<?php echo $cur_cat['tcat_id']; ?>"><?php echo $cur_cat['tcat_name_'.$lang]; ?></label> <input type="checkbox" name="typecat[]" value="<?php echo $cur_cat['tcat_id']; ?>" id="cat_<?php echo $cur_cat['tcat_id']; ?>" <?php echo (in_array($cur_cat['tcat_id'],$typecat)) ? 'checked="checked" ' : ''; ?>
-		<?php
-	}
-	?>
-	</p */ ?>
 	<p class="submit"><input type="submit" name="save" value="<?php echo $lang_site['Save changes']; ?>" /> &nbsp; <a href="javascript:history.go(-1)"><?php echo $lang_site['Go back']; ?></a></p>
 </form>
 <?php require './includes/bottom.php';
@@ -194,22 +156,9 @@ if($db->num_rows($type_result) > 0)
 {
 	while($cur_type = $db->fetch_assoc($type_result))
 	{
-//		$categories = explode('.',$cur_type['type_cat'];
-//		$c = $db->query('SELECT tcat_name_'.$lang.' FROM tuts_cat WHERE tcat_id IN('.$cur_type['type_cat'].')') or error('Unable to get category data', __FILE__, __LINE__, $db->error());
 ?>
 		<tr class="typerow">
 			<td class="name"><?php echo pun_htmlspecialchars(shorttext_lang($cur_type['type_name'],$lang)); ?></td>
-			<?php /*td class="cat center nowrap"><?php
-		$categ = NULL;
-		while ($cur_cat = $db->fetch_assoc($c))
-		{
-			if($categ != NULL)
-				echo ', ';
-
-			echo $cur_cat['tcat_name_'.$lang];
-			$categ = $cur_cat['tcat_name_'.$lang];
-		}
-			?></td */ ?>
 			<td class="actions center nowrap"><a href="admin_tuts_types.php?edit_type=<?php echo $cur_type['type_id']; ?>"><?php echo $lang_site['Edit']; ?></a>&nbsp;<a href="admin_tuts_types.php?del_type=<?php echo $cur_type['type_id']; ?>"><?php echo $lang_site['Delete']; ?></a></td>
 		</tr>
 <?php

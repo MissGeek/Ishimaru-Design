@@ -8,14 +8,17 @@ $up_errors = array(); //Initialisation des erreurs
 
 if(isset($_FILES[$icon]))
 {
+	//On vérifie si une nouvelle image a été envoyée
+//	if($_FILES[$icon]['error'] > 0)
+//		site_msg($lang_site['Admin bad transfer'].'rrrwaw');
+//	else
 	if($_FILES[$icon]['error'] == 0)
 	{
 		//Un vérifie sa taille
 		if($_FILES[$icon]['size'] > $size)
 			$up_errors[] = $lang_site['Admin file too big'];
 
-// Commenté tant que je n'ai pas trouvé une solution qui fonctionne
-//		$extensions_valide = array('jpg','jpeg','gif','png');
+		$extensions_valide = array('jpg','jpeg','gif','png');
 //		$allowed_types = array('image/gif', 'image/jpeg', 'image/pjpeg', 'image/png', 'image/x-png');
 		$extension_upload = strtolower(substr(strrchr($_FILES[$icon]['name'], '.'),1));
 
@@ -81,4 +84,13 @@ if(isset($_FILES[$icon]))
 		}
 	}
 }
+/*else
+{
+	//Rien n'a été envoyé.  On n'affiche le message d'erreur que pour les ajouts d'entrée
+	$img_url = $oldfile;
+	$img_value = '';
+	$img_error = 'pwet'.$lang_site['Admin no pic'];
+	if(empty($oldfile))
+		site_msg($img_error);
+}*/
 ?>

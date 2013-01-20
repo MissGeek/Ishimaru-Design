@@ -8,38 +8,29 @@ if(isset($_GET['act']))
 			'site_desc'				=> trim($_POST['form']['site_desc']),
 			'forum_url'				=> trim($_POST['form']['forum_url']),
 			'base_url'				=> trim($_POST['form']['base_url']),
-
 			'enable_intro'			=> 0,
-			'site_intro'			=> '',
-
+			'site_intro'				=> '',
 			'enable_news'			=> 0,
-			'forum_news'			=> '',
+			'forum_news'				=> '',
 			'nb_news_home'			=> 10,
 			'nb_news_page'			=> 10,
-
-			'enable_res'			=> 0,
+			'enable_res'				=> 0,
 			'nb_res_home'			=> 10,
 			'styles_per_page'		=> 12,
-			'hacks_per_page'		=> 12,
-
+			'hacks_per_page'			=> 12,
 			'enable_tuts'			=> 0,
 			'nb_tuts_home'			=> 10,
 			'tuts_per_page'			=> 10,
-
 			'enable_lastposts'		=> 0,
 			'nb_lastposts'			=> 10,
-
 			'enable_social'			=> 0,
 			'social_links'			=> '',
-
 			'enable_footer_links'	=> 0,
 			'footer_sitelinks'		=> '',
 			'footer_affiliates'		=> '',
-
-			'enable_ads'			=> 0,
+			'enable_ads'				=> 0,
 			'your_ads'				=> 'Saisissez votre publicité ici.'
 		);
-//		exit(print_r($form));
 
 		$message = '';
 		if($form['forum_url'] == '')
@@ -55,7 +46,6 @@ if(isset($_GET['act']))
 		$my_base = $form['base_url'].'install_site.php?act=install';
 		if($form['base_url'] == '')
 			$message = '<p>Vous devez saisir l\'URL de base de votre site pour que votre site puisse fonctionner correctement !</p>';
-//		elseif(!file_exists($form['base_url'].'admin.php'))
 		elseif($base_to_check != $my_base)
 			$message = '<p>Le chemin saisi n\'est pas bon ou un problème est survenu lors de l\'upload des fichiers !<br />La base de référence : '.$base_to_check.'<br />Ma base : '.$my_base.'</p>';
 		else
@@ -84,35 +74,35 @@ if(isset($_GET['act']))
 
 			//Catégories de ressources
 			$schema = array(
-				'FIELDS'				=> array(
+				'FIELDS'					=> array(
 					'rcat_id'				=> array(
 						'datatype'				=> 'SERIAL',
-						'allow_null'    		=> false
+						'allow_null'    			=> false
 					),
-					'rcat_name'			=> array(
+					'rcat_name'				=> array(
 						'datatype'				=> 'VARCHAR(64)',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
-					'rcat_clearname'		=> array(
+					'rcat_clearname'			=> array(
 						'datatype'				=> 'VARCHAR(64)',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'rcat_icon'				=> array(
 						'datatype'				=> 'VARCHAR(64)',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
-					'rcat_desc'			=> array(
+					'rcat_desc'				=> array(
 						'datatype'				=> 'MEDIUMTEXT',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
-					'rcat_order'			=> array(
+					'rcat_order'				=> array(
 						'datatype'				=> 'TINYINT(4) UNSIGNED',
-						'allow_null'			=> false,
+						'allow_null'				=> false,
 						'default'				=> 0
 					),
 					'rcat_lang'				=> array(
 						'datatype'				=> 'SET(\'fr\',\'en\')',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 				),
 				'PRIMARY KEY'			=> array('rcat_id'),
@@ -124,34 +114,34 @@ if(isset($_GET['act']))
 
 			//Sous-catégories de ressources
 			$schema = array(
-				'FIELDS'				=> array(
+				'FIELDS'					=> array(
 					'rsub_id'				=> array(
 						'datatype'				=> 'SERIAL',
-						'allow_null'    		=> false
+						'allow_null'    			=> false
 					),
-					'rsub_name'			=> array(
+					'rsub_name'				=> array(
 						'datatype'				=> 'VARCHAR(32)',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
-					'rsub_clearname'		=> array(
+					'rsub_clearname'			=> array(
 						'datatype'				=> 'VARCHAR(32)',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'rsub_type'				=> array(
 						'datatype'				=> 'ENUM(\'hack\',\'style\')',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
-					'rsub_catid'			=>array(
+					'rsub_catid'				=>array(
 						'datatype'				=> 'TINYINT(4) UNSIGNED',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
-					'rsub_desc'			=> array(
+					'rsub_desc'				=> array(
 						'datatype'				=> 'MEDIUMTEXT',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'rsub_lang'				=> array(
 						'datatype'				=> 'SET(\'fr\',\'en\')',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 				),
 				'PRIMARY KEY'			=> array('rsub_id'),
@@ -163,61 +153,61 @@ if(isset($_GET['act']))
 
 			//Ressources
 			$schema = array(
-				'FIELDS'				=> array(
+				'FIELDS'					=> array(
 					'rentry_id'				=> array(
 						'datatype'				=> 'SERIAL',
-						'allow_null'    		=> false
+						'allow_null'    			=> false
 					),
-					'rentry_name'		=> array(
+					'rentry_name'			=> array(
 						'datatype'				=> 'VARCHAR(128)',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
-					'rentry_shortdesc'	=> array(
+					'rentry_shortdesc'		=> array(
 						'datatype'				=> 'VARCHAR(512)',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
-					'rentry_screen_main'	=> array(
+					'rentry_screen_main'		=> array(
 						'datatype'				=> 'INT(11) UNSIGNED',
-						'allow_null'			=> false,
+						'allow_null'				=> false,
 						'default'				=> 0
 					),
-					'rentry_desc'		=> array(
+					'rentry_desc'			=> array(
 						'datatype'				=> 'MEDIUMTEXT',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
-					'rentry_authornotes'	=> array(
+					'rentry_authornotes'		=> array(
 						'datatype'				=> 'MEDIUMTEXT',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'rentry_subcatid'		=> array(
 						'datatype'				=> 'SMALLINT(6) UNSIGNED',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'rentry_catid'			=> array(
 						'datatype'				=> 'TINYINT(4) UNSIGNED',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'rentry_download'		=> array(
 						'datatype'				=> 'VARCHAR(256)',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
-					'rentry_publish'		=> array(
+					'rentry_publish'			=> array(
 						'datatype'				=> 'TINYINT(1) UNSIGNED',
-						'allow_null'			=> false,
+						'allow_null'				=> false,
 						'default'				=> 0
 					),
 					'rentry_lang'			=> array(
 						'datatype'				=> 'SET(\'fr\',\'en\')',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
-					'rentry_publishdate'	=> array(
+					'rentry_publishdate'		=> array(
 						'datatype'				=> 'INT(11) UNSIGNED',
-						'allow_null'			=> false,
+						'allow_null'				=> false,
 						'default'				=> 0
 					),
 					'rentry_lastupdate'		=> array(
 						'datatype'				=> 'INT(11) UNSIGNED',
-						'allow_null'			=> false,
+						'allow_null'				=> false,
 						'default'				=> 0
 					)
 				),
@@ -230,26 +220,26 @@ if(isset($_GET['act']))
 
 			//Captures d'écran de ressources
 			$schema = array(
-				'FIELDS'				=> array(
-					'rscreen_id'			=> array(
+				'FIELDS'					=> array(
+					'rscreen_id'				=> array(
 						'datatype'				=> 'SERIAL',
-						'allow_null'    		=> false
+						'allow_null'				=> false
 					),
-					'rscreen_legend'		=> array(
+					'rscreen_legend'			=> array(
 						'datatype'				=> 'VARCHAR(256)',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'rscreen_url_full'		=> array(
 						'datatype'				=> 'VARCHAR(64)',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'rscreen_url_small'		=> array(
 						'datatype'				=> 'VARCHAR(64)',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'rscreen_entryid'		=> array(
 						'datatype'				=> 'MEDIUMINT(9) UNSIGNED',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					)
 				),
 				'PRIMARY KEY'			=> array('rscreen_id'),
@@ -261,39 +251,39 @@ if(isset($_GET['act']))
 
 			//Catégories de tutoriels
 			$schema = array(
-				'FIELDS'				=> array(
+				'FIELDS'					=> array(
 					'tcat_id'				=> array(
 						'datatype'				=> 'SERIAL',
-						'allow_null'	    	=> false
+						'allow_null'			    	=> false
 					),
-					'tcat_name'			=> array(
+					'tcat_name'				=> array(
 						'datatype'				=> 'VARCHAR(64)',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
-					'tcat_clearname'		=> array(
+					'tcat_clearname'			=> array(
 						'datatype'				=> 'VARCHAR(64)',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'tcat_icon'				=> array(
 						'datatype'				=> 'VARCHAR(64)',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
-					'tcat_desc'			=> array(
+					'tcat_desc'				=> array(
 						'datatype'				=> 'MEDIUMTEXT',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
-					'tcat_order'			=> array(
+					'tcat_order'				=> array(
 						'datatype'				=> 'TINYINT(4) UNSIGNED',
-						'allow_null'			=> false,
+						'allow_null'				=> false,
 						'default'				=> 0
 					),
 					'tcat_lang'				=> array(
 						'datatype'				=> 'SET(\'fr\',\'en\')',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'tcat_hasversions'		=> array(
 						'datatype'				=> 'TINYINT(1) UNSIGNED',
-						'allow_null'			=> false,
+						'allow_null'				=> false,
 						'default'				=> 0
 					)
 				),
@@ -306,18 +296,18 @@ if(isset($_GET['act']))
 
 			//Versions pour tutoriels
 			$schema = array(
-				'FIELDS'				=> array(
-					'version_id'			=> array(
+				'FIELDS'					=> array(
+					'version_id'				=> array(
 						'datatype'				=> 'SERIAL',
-						'allow_null'	    	=> false
+						'allow_null'	    			=> false
 					),
 					'version_name'			=> array(
 						'datatype'				=> 'VARCHAR(16)',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'version_cat'			=> array(
 						'datatype'				=> 'TINYINT(4) UNSIGNED',
-						'allow_null'			=> false,
+						'allow_null'				=> false,
 						'default'				=> 0
 					)
 				),
@@ -330,14 +320,14 @@ if(isset($_GET['act']))
 
 			//Types de tutoriels
 			$schema = array(
-				'FIELDS'				=> array(
+				'FIELDS'					=> array(
 					'type_id'				=> array(
 						'datatype'				=> 'SERIAL',
-						'allow_null'    		=> false
+						'allow_null'    			=> false
 					),
-					'type_name'			=> array(
+					'type_name'				=> array(
 						'datatype'				=> 'VARCHAR(64)',
-						'allow_null'			=> false,
+						'allow_null'				=> false,
 					)
 				),
 				'PRIMARY KEY'			=> array('type_id'),
@@ -349,68 +339,68 @@ if(isset($_GET['act']))
 
 			//Tutoriels
 			$schema = array(
-				'FIELDS'				=> array(
+				'FIELDS'					=> array(
 					'tentry_id'				=> array(
 						'datatype'				=> 'SERIAL',
-						'allow_null'    		=> false
+						'allow_null'    			=> false
 					),
 					'tentry_name'			=> array(
 						'datatype'				=> 'VARCHAR(128)',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'tentry_icon'			=> array(
 						'datatype'				=> 'VARCHAR(64)',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'tentry_desc'			=> array(
 						'datatype'				=> 'MEDIUMTEXT',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'tentry_level'			=> array(
 						'datatype'				=> 'TINYINT(1) UNSIGNED',
-						'allow_null'			=> false,
+						'allow_null'				=> false,
 						'default'				=> 0
 					),
 					'tentry_lang'			=> array(
 						'datatype'				=> 'ENUM(\'fr\',\'en\')',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'tentry_author'			=> array(
 						'datatype'				=> 'MEDIUMINT(9) UNSIGNED',
-						'allow_null'			=> false,
+						'allow_null'				=> false,
 						'default'				=> 0
 					),
 					'tentry_type'			=> array(
 						'datatype'				=> 'TINYINT(4) UNSIGNED',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
-					'tentry_publish'		=> array(
+					'tentry_publish'			=> array(
 						'datatype'				=> 'TINYINT(1) UNSIGNED',
-						'allow_null'			=> false,
+						'allow_null'				=> false,
 						'default'				=> 0
 					),
-					'tentry_publishdate'	=> array(
+					'tentry_publishdate'		=> array(
 						'datatype'				=> 'INT(11) UNSIGNED',
-						'allow_null'			=> false,
+						'allow_null'				=> false,
 						'default'				=> 0
 					),
 					'tentry_lastupdate'		=> array(
 						'datatype'				=> 'INT(11) UNSIGNED',
-						'allow_null'			=> false,
+						'allow_null'				=> false,
 						'default'				=> 0
 					),
 					'tentry_comments'		=> array(
 						'datatype'				=> 'SMALLINT(6) UNSIGNED',
-						'allow_null'			=> false,
+						'allow_null'				=> false,
 						'default'				=> 0
 					),
 					'tentry_catid'			=> array(
 						'datatype'				=> 'TINYINT(4) UNSIGNED',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
-					'tentry_version'		=> array(
+					'tentry_version'			=> array(
 						'datatype'				=> 'TINYINT(4) UNSIGNED',
-						'allow_null'			=> true
+						'allow_null'				=> true
 					)
 				),
 				'PRIMARY KEY'			=> array('tentry_id'),
@@ -422,35 +412,35 @@ if(isset($_GET['act']))
 
 			//Parties de tutoriel
 			$schema = array(
-				'FIELDS'				=> array(
+				'FIELDS'					=> array(
 					'text_id'				=> array(
 						'datatype'				=> 'SERIAL',
-						'allow_null'    		=> false
+						'allow_null'    			=> false
 					),
 					'text_name'				=> array(
 						'datatype'				=> 'VARCHAR(128)',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'text_text'				=> array(
 						'datatype'				=> 'TEXT',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
-					'text_order'			=> array(
+					'text_order'				=> array(
 						'datatype'				=> 'TINYINT(4) UNSIGNED',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'text_entryid'			=> array(
 						'datatype'				=> 'MEDIUMINT(9) UNSIGNED',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'text_publishdate'		=> array(
 						'datatype'				=> 'INT(11) UNSIGNED',
-						'allow_null'			=> false,
+						'allow_null'				=> false,
 						'default'				=> 0
 					),
 					'text_lastupdate'		=> array(
 						'datatype'				=> 'INT(11) UNSIGNED',
-						'allow_null'			=> false,
+						'allow_null'				=> false,
 						'default'				=> 0
 					)
 				),
@@ -463,35 +453,35 @@ if(isset($_GET['act']))
 
 			//Commentaires de tutoriels
 			$schema = array(
-				'FIELDS'				=> array(
-					'comment_id'			=> array(
+				'FIELDS'					=> array(
+					'comment_id'				=> array(
 						'datatype'				=> 'SERIAL',
-						'allow_null'    		=> false
+						'allow_null'    			=> false
 					),
 					'comment_entryid'		=> array(
 						'datatype'				=> 'MEDIUMINT(9) UNSIGNED',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'comment_content'		=> array(
 						'datatype'				=> 'MEDIUMTEXT',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
-					'comment_author'		=> array(
+					'comment_author'			=> array(
 						'datatype'				=> 'MEDIUMINT(9) UNSIGNED',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
-					'comment_ip'			=> array(
+					'comment_ip'				=> array(
 						'datatype'				=> 'VARCHAR(39)',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
-					'comment_publishdate'		=> array(
+					'comment_publishdate'	=> array(
 						'datatype'				=> 'INT(11) UNSIGNED',
-						'allow_null'			=> false,
+						'allow_null'				=> false,
 						'default'				=> 0
 					),
 					'comment_lastupdate'		=> array(
 						'datatype'				=> 'INT(11) UNSIGNED',
-						'allow_null'			=> false,
+						'allow_null'				=> false,
 						'default'				=> 0
 					)
 				),
@@ -501,35 +491,35 @@ if(isset($_GET['act']))
 
 			//Pages statiques
 			$schema = array(
-				'FIELDS'				=> array(
+				'FIELDS'					=> array(
 					'page_id'				=> array(
 						'datatype'				=> 'SERIAL',
-						'allow_null'	    	=> false
+						'allow_null'	    			=> false
 					),
-					'page_title'			=> array(
+					'page_title'				=> array(
 						'datatype'				=> 'VARCHAR(128)',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'page_title_clean'		=> array(
 						'datatype'				=> 'VARCHAR(32)',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'page_text'				=> array(
 						'datatype'				=> 'TEXT',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'page_lang'				=> array(
 						'datatype'				=> 'ENUM(\'fr\',\'en\')',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'page_publishdate'		=> array(
 						'datatype'				=> 'INT(11) UNSIGNED',
-						'allow_null'			=> false,
+						'allow_null'				=> false,
 						'default'				=> 0
 					),
 					'page_lastupdate'		=> array(
 						'datatype'				=> 'INT(11) UNSIGNED',
-						'allow_null'			=> false,
+						'allow_null'				=> false,
 						'default'				=> 0
 					)
 				),
@@ -542,14 +532,14 @@ if(isset($_GET['act']))
 
 			//Configuration générale
 			$schema = array(
-				'FIELDS'				=> array(
+				'FIELDS'					=> array(
 					'conf_name'				=> array(
 						'datatype'				=> 'VARCHAR(255)',
-						'allow_null'			=> false
+						'allow_null'				=> false
 					),
 					'conf_value'			=> array(
 						'datatype'				=> 'TEXT',
-						'allow_null'			=> true
+						'allow_null'				=> true
 					)
 				),
 				'PRIMARY KEY'			=> array('conf_name')

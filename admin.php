@@ -3,7 +3,7 @@ if(!$pun_user['is_admmod'])
 	message($lang_site['No permission']);
 
 $lang = $lang_site['Lang'];
-//Pour l'inclusion des modules appropriés
+// For inclusion of appropriate modules
 $module = isset($_GET['adm']) ? $_GET['adm'] : NULL;
 if($module == 'cfg')
 {
@@ -16,30 +16,23 @@ if($module == 'cfg')
 
 		$form = array(
 			'site_desc'				=> pun_trim($_POST['form']['site_desc']),
-
 			'enable_intro'			=> $_POST['form']['enable_intro'] != '1' ? '0' : '1',
-			'site_intro'			=> pun_trim($_POST['form']['site_intro']),
-
+			'site_intro'				=> pun_trim($_POST['form']['site_intro']),
 			'enable_news'			=> $_POST['form']['enable_news'] != '1' ? '0' : '1',
-			'forum_news'			=> pun_trim($_POST['form']['forum_news']),
+			'forum_news'				=> pun_trim($_POST['form']['forum_news']),
 			'nb_news_home'			=> intval($_POST['form']['nb_news_home']),
 			'nb_news_page'			=> intval($_POST['form']['nb_news_page']),
-
-			'enable_res'			=> $_POST['form']['enable_res'] != '1' ? '0' : '1',
+			'enable_res'				=> $_POST['form']['enable_res'] != '1' ? '0' : '1',
 			'nb_res_home'			=> intval($_POST['form']['nb_res_home']),
 			'styles_per_page'		=> intval($_POST['form']['styles_per_page']),
-			'hacks_per_page'		=> intval($_POST['form']['hacks_per_page']),
-
+			'hacks_per_page'			=> intval($_POST['form']['hacks_per_page']),
 			'enable_tuts'			=> $_POST['form']['enable_tuts'] != '1' ? '0' : '1',
 			'nb_tuts_home'			=> intval($_POST['form']['nb_tuts_home']),
 			'tuts_per_page'			=> intval($_POST['form']['tuts_per_page']),
-
 			'enable_lastposts'		=> $_POST['form']['enable_lastposts'] != '1' ? '0' : '1',
 			'nb_lastposts'			=> intval($_POST['form']['nb_lastposts']),
-
 			'enable_social'			=> $_POST['form']['enable_social'] != '1' ? '0' : '1',
 			'social_links'			=> pun_trim($_POST['form']['social_links']),
-
 			'enable_footer_links'	=> $_POST['form']['enable_footer_links'] != '1' ? '0' : '1',
 			'footer_sitelinks'		=> pun_trim($_POST['form']['footer_sitelinks']),
 			'footer_affiliates'		=> pun_trim($_POST['form']['footer_affiliates']),
@@ -104,27 +97,27 @@ if($module == 'cfg')
 		if($form['social_links'] != '')
 			$form['social_links'] = pun_linebreaks($form['social_links']);
 
-	foreach ($form as $key => $input)
-	{
-		// Only update values that have changed
-		if (array_key_exists('o_'.$key, $site_config) && $site_config['o_'.$key] != $input)
+		foreach ($form as $key => $input)
 		{
-			if ($input != '' || is_int($input))
-				$value = '\''.$db->escape($input).'\'';
-			else
-				$value = 'NULL';
+			// Only update values that have changed
+			if (array_key_exists('o_'.$key, $site_config) && $site_config['o_'.$key] != $input)
+			{
+				if ($input != '' || is_int($input))
+					$value = '\''.$db->escape($input).'\'';
+				else
+					$value = 'NULL';
 
-			$db->query('UPDATE site_config SET conf_value='.$value.' WHERE conf_name=\'o_'.$db->escape($key).'\'') or error('Unable to update site config', __FILE__, __LINE__, $db->error());
+				$db->query('UPDATE site_config SET conf_value='.$value.' WHERE conf_name=\'o_'.$db->escape($key).'\'') or error('Unable to update site config', __FILE__, __LINE__, $db->error());
+			}
 		}
-	}
 
-	// Regenerate the config cache
-	if (!defined('SITE_CACHE_FUNCTIONS_LOADED'))
-		require './includes/cache.php';
+		// Regenerate the config cache
+		if (!defined('SITE_CACHE_FUNCTIONS_LOADED'))
+			require './includes/cache.php';
 
-	generate_site_config_cache();
+		generate_site_config_cache();
 
-	site_redirect('admin.php?adm=cfg', $lang_site['Options updated redirect']);
+		site_redirect('admin.php?adm=cfg', $lang_site['Options updated redirect']);
 
 	}
 
@@ -246,17 +239,17 @@ elseif($module == 'resources')
 </ul>
 <div class="adm-cont">
 <?php
-if (file_exists('./cache/cache_adm_res_home-'.$lang.'.php'))
-	include './cache/cache_adm_res_home-'.$lang.'.php';
+	if (file_exists('./cache/cache_adm_res_home-'.$lang.'.php'))
+		include './cache/cache_adm_res_home-'.$lang.'.php';
 
-if (!defined('PUN_ADM_RES_HOME_LOADED'))
-{
-	if (!defined('SITE_CACHE_FUNCTIONS_LOADED'))
-		require './includes/cache.php';
+	if (!defined('PUN_ADM_RES_HOME_LOADED'))
+	{
+		if (!defined('SITE_CACHE_FUNCTIONS_LOADED'))
+			require './includes/cache.php';
 
-	generate_admin_res_home_cache($lang);
-	require './cache/cache_adm_res_home-'.$lang.'.php';
-}
+		generate_admin_res_home_cache($lang);
+		require './cache/cache_adm_res_home-'.$lang.'.php';
+	}
 ?>
 	<div class="clearfix"></div>
 </div>
@@ -280,17 +273,17 @@ elseif($module == 'tutorials')
 </ul>
 <div class="adm-cont">
 <?php
-if (file_exists('./cache/cache_adm_tuts_home-'.$lang.'.php'))
-	include './cache/cache_adm_tuts_home-'.$lang.'.php';
+	if (file_exists('./cache/cache_adm_tuts_home-'.$lang.'.php'))
+		include './cache/cache_adm_tuts_home-'.$lang.'.php';
 
-if (!defined('PUN_ADM_TUTS_HOME_LOADED'))
-{
-	if (!defined('SITE_CACHE_FUNCTIONS_LOADED'))
-		require './includes/cache.php';
+	if (!defined('PUN_ADM_TUTS_HOME_LOADED'))
+	{
+		if (!defined('SITE_CACHE_FUNCTIONS_LOADED'))
+			require './includes/cache.php';
 
-	generate_admin_tuts_home_cache($lang);
-	require './cache/cache_adm_tuts_home-'.$lang.'.php';
-}
+		generate_admin_tuts_home_cache($lang);
+		require './cache/cache_adm_tuts_home-'.$lang.'.php';
+	}
 ?>
 	<div class="clearfix"></div>
 </div>

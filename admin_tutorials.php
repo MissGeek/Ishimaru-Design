@@ -12,21 +12,13 @@ if(isset($_GET['add_tut']))
 
 	if(isset($_POST['save']))
 	{
-/*		$cat_id = intval($_POST['tut_cat']);
-		if($cat_id < 1)
-			site_msg($lang_site['Bad request'].'-2');*/
 		$cat_id = pun_trim($_POST['tut_cat']);
 		$catver = get_cat_version($cat_id);
 		if($catver == 'null')
 			site_msg($lang_site['Bad request']);
 
-//		$keys = array_keys($catver);
-//		$values = array_values($catver);
-
 		$cat_res = $db->query('SELECT tcat_lang FROM tuts_cat WHERE tcat_id='.$catver['cat']) or error('Unable to get category ID', __FILE__, __LINE__, $db->error());
 		$langs = $db->result($cat_res);
-//		$fr = (preg_match('#fr#',$langs) ? 1 : 0;
-//		$en = (preg_match('#en#',$langs) ? 1 : 0;
 		$tut_lang = pun_trim($_POST['tut_lang']);
 		if(!preg_match('#'.$tut_lang.'#',$langs))
 			site_msg($lang_site['Admin no language']);
@@ -41,13 +33,6 @@ if(isset($_GET['add_tut']))
 			$tut_desc = preparse_bbcode($desc, $errors);
 		if($tut_desc == '')
 			site_msg($lang_site['Admin no desc'].'-5');
-
-		//Pourait devenir facultatif… à voir.
-/*		$xtra = pun_linebreaks(pun_trim($_POST['tut_xtra']));
-		if ($pun_config['p_message_bbcode'] == '1')
-			$tut_extra = preparse_bbcode($xtra, $errors);
-		if($tut_extra == '')
-			site_msg($lang_site['Admin no extrafields'].'-6');*/
 
 		//Un tuto ajouté sera forcément envoyé par son auteur
 		$tut_author = intval($_POST['tut_author']);
@@ -323,13 +308,6 @@ elseif(isset($_GET['edit_tut']))
 		if($tut_desc == '')
 			site_msg($lang_site['Admin no desc'].'-3');
 
-		//Pourait devenir facultatif… à voir.
-/*		$xtra = pun_linebreaks(pun_trim($_POST['tut_xtra']));
-		if ($pun_config['p_message_bbcode'] == '1')
-			$tut_extra = preparse_bbcode($xtra, $errors);
-		if($tut_extra == '')
-			site_msg($lang_site['Admin no extrafields'].'-4');*/
-
 		$tut_type = intval($_POST['tut_type']);
 		if($tut_type < 1)
 			site_msg($lang_site['No tutorial type'].'-5');
@@ -457,12 +435,16 @@ elseif(isset($_GET['edit_tut']))
 </form>
 <?php require './includes/bottom.php';
 }
+
+/*** Cette partie est encore buggée ! ***/
 elseif(isset($_GET['del_tut']))
 {
 	site_confirm_referrer('admin_tutorials.php');
 	$tut_id = intval($_GET['del_tut']);
 	if($tut_id < 1)
 		site_msg($lang_site['Bad request']);
+
+	exit(var_dump($tut_id));
 
 	if(isset($_POST['del_tut_comply']))
 	{
@@ -480,13 +462,11 @@ elseif(isset($_GET['del_tut']))
 			$db->query('DELETE FROM tuts_text WHERE text_id IN('.$part_ids.')') or error('Unable to prune tutorial parts', __FILE__, __LINE__, $db->error());
 		}
 		//Pour la suppression de l'icône.  Commenté pour le moment
-/*		$result2 = $db->query('SELECT tentry_icon FROM tuts_entries WHEHE tentry_id='.$tut_id) or error('Unable to get tutorial data', __FILE__, __LINE__, $db->error());
+		$result2 = $db->query('SELECT tentry_icon FROM tuts_entries WHEHE tentry_id='.$tut_id) or error('Unable to get tutorial data', __FILE__, __LINE__, $db->error());
 		$img_to_delete = $db->result($result2);
 		if(!empty($img_to_delete))
-			remove_file($img_to_delete,'tut');*/
+			remove_file($img_to_delete,'tut');
 
-		// Delete resource
-//		$db->query('DELETE FROM res_entries WHERE rentry_id='.$res_id) or error('Unable to prune resources', __FILE__, __LINE__, $db->error());
 		$db->query('DELETE FROM tuts_entries WHERE tentry_id='.$tut_id) or error('Unable to prune tutorial', __FILE__, __LINE__, $db->error());
 
 		if (!defined('SITE_CACHE_FUNCTIONS_LOADED'))
@@ -495,7 +475,7 @@ elseif(isset($_GET['del_tut']))
 		generate_lasttuts_cache($lang);
 		generate_admin_home_cache();
 		generate_admin_tuts_home_cache($lang);
-		site_redirect('admin_tuts_cat.php', $lang_site['Admin tut deleted redirect']);
+		site_redirect('admin_tutorials.php', $lang_site['Admin tut deleted redirect']);
 	}
 	else
 	{

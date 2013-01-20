@@ -1,0 +1,14 @@
+/*
+  Stylesheet for print media
+*/
+
+/* Hide unnecessary elements */
+#quickaccess, #menu, #sidebar, .crumbs, .footer-block, #access, #goto-top, .next-previous {
+	display:none;
+}
+
+/* Smaller font for footer text */
+#footer { font-size: 10pt; }
+
+/* Float property is ignored by print media, so we use inline-block display instead */
+ul.tuto-info { display: inline-block; }

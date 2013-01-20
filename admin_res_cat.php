@@ -17,14 +17,10 @@ if(isset($_GET['add_cat']))
 		$catname = pun_trim($_POST['catname']);	
 		if($catname == '')
 			site_msg($lang_site['Admin no catname']);
-//		if(!preg_match('#(\{(en|fr)\|.+\})$#',$catname))
-//			site_msg($lang_site['Wrong format']);
 	
 		$catclear = pun_trim(str_replace(' ','-',$_POST['catclear']));
 		if($catclear == '')
 			site_msg($lang_site['Admin no clearname']);
-//		if(!preg_match('#^\{(en|fr)\|.+\}$#',$catclear))
-//			site_msg($lang_site['Wrong format']);
 	
 		$desc = pun_linebreaks(pun_trim($_POST['catdesc']));
 	
@@ -35,8 +31,6 @@ if(isset($_GET['add_cat']))
 		}
 		if($catdesc == '')
 			site_msg($lang_site['Admin no desc']);
-//		if(!preg_match('#^\{(en|fr)\|.+\}$#',$catdesc))
-//			site_msg($lang_site['Wrong format']);
 
 		$disp_lang = array();
 		if($_POST['lang_fr'] == 'on')
@@ -105,14 +99,10 @@ elseif(isset($_GET['add_sub']))
 		$subname = pun_trim($_POST['subname']);	
 		if($subname == '')
 			site_msg($lang_site['Admin no subname']);
-//		if(!preg_match('#(\{(en|fr)\|.+\})+#',$subname))
-//			site_msg($lang_site['Wrong format']);
 	
 		$subclear = pun_trim(str_replace(' ','-',$_POST['subclear']));
 		if($subclear == '')
 			site_msg($lang_site['Admin no clearname']);
-//		if(!preg_match('#^\{(en|fr)\|.+\}$#',$subclear))
-//			site_msg($lang_site['Wrong format']);
 	
 		$desc = pun_linebreaks(pun_trim($_POST['subdesc']));
 	
@@ -123,8 +113,6 @@ elseif(isset($_GET['add_sub']))
 		}
 		if($subdesc == '')
 			site_msg($lang_site['Admin no desc']);
-//		if(!preg_match('#^\{(en|fr)\|.+\}$#',$subdesc))
-//			site_msg($lang_site['Wrong format']);
 
 		$disp_lang = array();
 		if($_POST['lang_fr'] == 'on')
@@ -182,14 +170,10 @@ if(isset($_GET['edit_cat']))
 		$catname = pun_trim($_POST['catname']);	
 		if($catname == '')
 			site_msg($lang_site['Admin no catname']);
-//		if(!preg_match('#(\{(en|fr)\|.+\})+#',$catname))
-//			site_msg($lang_site['Wrong format']);
 	
 		$catclear = pun_trim(str_replace(' ','-',$_POST['catclear']));
 		if($catclear == '')
 			site_msg($lang_site['Admin no clearname']);
-//		if(!preg_match('#^\{(en|fr)\|.+\}$#',$catclear))
-//			site_msg($lang_site['Wrong format']);
 	
 		$desc = pun_linebreaks(pun_trim($_POST['catdesc']));
 	
@@ -200,8 +184,6 @@ if(isset($_GET['edit_cat']))
 		}
 		if($catdesc == '')
 			site_msg($lang_site['Admin no desc']);
-//		if(!preg_match('#^\{(en|fr)\|.+\}$#',$catdesc))
-//			site_msg($lang_site['Wrong format']);
 
 		$disp_lang = array();
 		if($_POST['lang_fr'] == 'on')
@@ -279,14 +261,10 @@ elseif(isset($_GET['edit_sub']))
 		$subname = pun_trim($_POST['subname']);	
 		if($subname == '')
 			site_msg($lang_site['Admin no subname']);
-//		if(!preg_match('#(\{(en|fr)\|.+\})+#',$subname))
-//			site_msg($lang_site['Wrong format']);
 	
 		$subclear = pun_trim(str_replace(' ','-',$_POST['subclear']));
 		if($subclear == '')
 			site_msg($lang_site['Admin no clearname']);
-//		if(!preg_match('#^\{(en|fr)\|.+\}$#',$subclear))
-//			site_msg($lang_site['Wrong format']);
 	
 		$desc = pun_linebreaks(pun_trim($_POST['subdesc']));
 	
@@ -297,8 +275,6 @@ elseif(isset($_GET['edit_sub']))
 		}
 		if($subdesc == '')
 			site_msg($lang_site['Admin no desc']);
-//		if(!preg_match('#^\{(en|fr)\|.+\}$#',$subdesc))
-//			site_msg($lang_site['Wrong format']);
 
 		$disp_lang = array();
 		if($_POST['lang_fr'] == 'on')

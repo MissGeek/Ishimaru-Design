@@ -213,9 +213,7 @@ require './includes/top.php'; ?>
 <h3><?php echo $lang_site['Title resources']; ?></h3>
 <?php echo $lang_site['Explain res home'];
 
-//$nb_enttries = $db->num_rows($query);
 $count = 0;
-//$category = NULL;
 while($cur_cat = $db->fetch_assoc($query))
 {
 	$catname = pun_htmlspecialchars(shorttext_lang($cur_cat['rcat_name'],$lang));

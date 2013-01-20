@@ -29,16 +29,10 @@ require './includes/top.php'; ?>
 		</select></label> <input type="submit" value="<?php echo $lang_site['OK']; ?>" />
 	</p>
 </form>
-	<!-- p class="new-data"><a href="admin_pages.php?add_page=true"><?php echo $lang_site['Admin add page']; ?></a></p -->
-	<table class="adm-table" id="tbl-comment-list">
-		<tr>
-			<!-- th class="title"><?php echo $lang_site['Title']; ?></th>
-			<th class="lang"><?php echo $lang_site['Language']; ?></th>
-			<th class="url"><?php echo $lang_site['URL']; ?></th>
-			<th class="lastupdate"><?php echo $lang_site['Last update']; ?></th>
-			<th class="actions"><?php echo $lang_site['Actions']; ?></th -->
-			<th colspan="3"><?php echo $lang_site['Comments']; ?></th>
-		</tr>
+<table class="adm-table" id="tbl-comment-list">
+	<tr>
+		<th colspan="3"><?php echo $lang_site['Comments']; ?></th>
+	</tr>
 <?php
 
 $lang = $lang_site['Lang'];
@@ -59,11 +53,6 @@ if($db->num_rows($result) > 0)
 	{
 ?>
 		<tr class="catrow">
-			<!--td class="title"><?php echo pun_htmlspecialchars($cur_page['page_title']); ?></td>
-			<td class="lang center"><?php echo pun_htmlspecialchars($cur_page['page_lang']); ?></td>
-			<td class="link center"><a title="<?php echo $lang_site['Use right click']; ?>" href="index.php?module=page&amp;page=<?php echo $cur_page['page_id']; ?>"><?php echo 'index.php?module=page&amp;page='.$cur_page['page_id']; ?></a>
-			<td class="lastupdate center"><?php echo format_time($cur_page['page_lastupdate']); ?></td>
-			<td class="actions nowrap center"><a href="admin_pages.php?edit_page=<?php echo $cur_page['page_id']; ?>"><?php echo $lang_site['Edit']; ?></a> <a href="admin_pages.php?del_page=<?php echo $cur_page['page_id']; ?>"><?php echo $lang_site['Delete']; ?></a></td -->
 			<td><?php echo $lang_site['By'].' <a href="'.PUN_ROOT.'profile.php?id='.$cur_comment['comment_author'].'">'.$cur_comment['username'].'</a> ('.$cur_comment['comment_ip'].')'; ?></td>
 			<td><?php echo $lang_site['Tutorial']; ?> : <a href="tutorials.php?tut=<?php echo $cur_comment['tentry_id']; ?>"><?php echo pun_htmlspecialchars($cur_comment['tentry_name']); ?></a> (<a href="tutorials.php?cat=<?php echo $cur_comment['tcat_id']; ?>"><?php echo pun_htmlspecialchars(shorttext_lang($cur_comment['tcat_name'],$lang)); ?></a>)</td>
 			<td><a href="tutorials.php?edit_comment=<?php echo $cur_comment['comment_id']; ?>&amp;csrf=<?php echo sha1($pun_user['username'].$_SERVER['REMOTE_ADDR']); ?>"><?php echo $lang_site['Edit']; ?></a> - <a href="tutorials.php?del_comment=<?php echo $cur_comment['comment_id']; ?>&amp;csrf=<?php echo sha1($pun_user['username'].$_SERVER['REMOTE_ADDR']); ?>"><?php echo $lang_site['Delete']; ?></a></td>
@@ -76,7 +65,6 @@ if($db->num_rows($result) > 0)
 }
 	else echo '<tr><td colspan="3" class="center">'.$lang_site['No comment'].'</td></tr>'; ?>
 	</table>
-	<!-- p class="new-data"><a href="admin_pages.php?add_page=true"><?php echo $lang_site['Admin add page']; ?></a></p -->
 	<div class="clearfix"></div>
 </div>
 <?php require './includes/bottom.php'; ?>

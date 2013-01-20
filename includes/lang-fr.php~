@@ -317,6 +317,7 @@ $lang_site = array(
 
 	'Admin tut name' => 'Nom du tutoriel',
 	'Admin tut desc' => 'Description du tutoriel',
+//	'Admin tut extra' => 'Informations supplémentaires',
 	'Admin tut icon' => 'Icône du tutoriel',
 	'Admin tut type' => 'Type de tutoriel',
 	'Admin tut level' => 'Niveau de difficulté',
@@ -413,6 +414,7 @@ $lang_site = array(
 	'Admin no longdesc' => 'La description longue est vide',
 	'Admin no notes' => 'Les notes de l’auteur sont vides',
 	'Admin no typename' => 'Au moins un des deux champs de nom du type de tutoriel n’est pas rempli !',
+//	'Admin no typecat' => 'Vous n’avez spécifié aucune catégorie pour le type de tutoriel !',
 	'Admin no tutname' => 'Le nom de tutoriel est vide !',
 	'Admin no part name' => 'Le nom de la partie est vide !',
 	'Admin no text' => 'Le texte est vide !',
