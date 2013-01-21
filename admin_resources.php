@@ -152,7 +152,7 @@ elseif(isset($_GET['edit_res']))
 		$default = intval($_POST['default_screen']);
 		if($default == 0)
 		{
-			$query = $db->query('SELECT MAX(rscreen_id) FROM res_screen') or error('Unable to get screen id', __FILE__, __LINE__, $db->error());
+			$query = $db->query('SELECT MAX(rscreen_id) FROM res_screens') or error('Unable to get screen id', __FILE__, __LINE__, $db->error());
 			$last_screen = $db->result($query);
 			$db->query('UPDATE res_entries SET rentry_screen_main='.$last_screen.' WHERE rentry_id='.$edit_res) or error('Unable to update default screen', __FILE__, __LINE__, $db->error());
 		}
@@ -300,7 +300,7 @@ elseif(isset($_GET['edit_res']))
 		$download = pun_trim($_POST['download']);
 
 		$sql_lang = implode(',',$disp_lang);
-		$sql = 'UPDATE res_entries SET rentry_name=\''.$db->escape($resname).'\',rentry_shortdesc=\''.$db->escape($resshort).'\',rentry_desc=\''.$db->escape($resdesc).'\',rentry_authornotes=\''.$db->escape($resnotes).'\', rentry_lang=\''.$db->escape($sql_lang).'\',rentry_download=\''.$db->escape($download).'\',rentry_lastupdate='.time().' WHERE rentry_id='.$edit_res;
+		$sql = 'UPDATE res_entries SET rentry_name=\''.$db->escape($resname).'\',rentry_shortdesc=\''.$db->escape($resshort).'\',rentry_desc=\''.$db->escape($resdesc).'\',rentry_authornotes=\''.$db->escape($resnotes).'\', rentry_lang=\''.$db->escape($sql_lang).'\',rentry_download=\''.$db->escape($download).'\',rentry_subcatid=\''.$sub_id.'\',rentry_catid=\''.$cat_id.'\',rentry_lastupdate='.time().' WHERE rentry_id='.$edit_res;
 		$db->query($sql) or error('Unable to update resource data', __FILE__, __LINE__, $db->error());
 
 		if (!defined('SITE_CACHE_FUNCTIONS_LOADED'))
@@ -408,6 +408,8 @@ $result3 = $db->query('SELECT rscreen_id, rscreen_legend, rscreen_url_full, rscr
 			<?php
 		}
 	}
+	else
+		echo '<p class="notice">'.$lang_site['No screen'].'</p>';
 	require './includes/bottom.php';
 }
 elseif(isset($_GET['del_res']))

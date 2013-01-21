@@ -336,7 +336,7 @@ if(isset($_GET['del_cat']))
 		{
 			$cur_subcat = $db->result($result, $i);
 			prune_res_subcat($cur_subcat);
-			$db->query('DELETE FROM res_subcat WHERE rsub_id='.$cur_subcat) or error('Unable to delete subcat'. __FILE__, __LINE__, $db->error());
+			$db->query('DELETE FROM res_subcat WHERE rsub_id='.$cur_subcat) or error('Unable to delete subcat', __FILE__, __LINE__, $db->error());
 		}
 		//Get the cat's icon
 		$query = $db->query('SELECT rcat_icon FROM res_cat WHERE rcat_id='.$cat_id) or error('Unable to fetch icon data', __FILE__, __LINE__, $db->error());

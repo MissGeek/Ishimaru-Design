@@ -14,12 +14,10 @@ if(isset($_FILES[$icon]))
 		if($_FILES[$icon]['size'] > $size)
 			$up_errors[] = $lang_site['Admin file too big'];
 
-// Commenté tant que je n'ai pas trouvé une solution qui fonctionne
-//		$extensions_valide = array('jpg','jpeg','gif','png');
-//		$allowed_types = array('image/gif', 'image/jpeg', 'image/pjpeg', 'image/png', 'image/x-png');
+		$extensions_valide = array('jpg','jpeg','gif','png');
 		$extension_upload = strtolower(substr(strrchr($_FILES[$icon]['name'], '.'),1));
 
-		if(!in_array($extension_upload,$extensions_valide)/* || !in_array($new_file['icon'],$allowed_types)*/)
+		if(!in_array($extension_upload,$extensions_valide))
 			$up_errors[] = $lang_site['Admin bad extension'];
 
 		if(!file_exists('./img/'.$folder))

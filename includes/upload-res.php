@@ -2,12 +2,8 @@
 //Fichier pour le traitement des images
 //On vérifie si un fichier a été envoyé
 
-//	$img_url = isset($oldfile) ? $oldfile : '';
-//	$img_values = array();
 	$up_errors = array(); //Initialisation des erreurs
 
-	//$img_url = $oldfile;
-	//$img_query = "img_url='".$img_url."'";
 	if(isset($_FILES[$icon]))
 	{
 		//On vérifie si une nouvelle image a été envoyée
@@ -20,10 +16,9 @@
 				$up_errors[] = $lang_site['Admin file too big'].'-2';
 
 			$extensions_valide = array('jpg','jpeg','gif','png');
-//			$allowed_types = array('image/gif', 'image/jpeg', 'image/pjpeg', 'image/png', 'image/x-png');
 			$extension_upload = strtolower(substr(strrchr($_FILES[$icon]['name'], '.'),1));
 
-			if(!in_array($extension_upload,$extensions_valide)/* || !in_array($new_file['icon'],$allowed_types)*/)
+			if(!in_array($extension_upload,$extensions_valide))
 				$up_errors[] = $lang_site['Admin bad extension'].'-3';
 
 			if(!file_exists('./img/'.$folder) || !file_exists('./img/'.$folder.'/thumbs'))
@@ -36,33 +31,15 @@
 				//Tous les critères sont corrects, donc on continue le traitement
 				$nom = rename_file($folder,$_FILES[$icon]['name']);
 				$resultat = move_uploaded_file($_FILES[$icon]['tmp_name'],$nom);
-				echo $nom;
-//				echo '<img src="'.$nom.'" />';
 				if($resultat)
 				{
-//					message($lang_site['Adm_transfer_success'].'<br />'.$nom);
-//					$img_url = get_image_link($nom,''); //Pour la requête SQL
 					$img_url = $nom;
-//					echo $img_url;
-//					$img_values[$field] = $db->escape($img_url);
-					//Ça s'est déroulé avec succès, donc on crée les miniatures.  Attachez vos tuques, cette prodédures est très lourde !
-/*					if($thumb == true)
-					{*/
-//						$source = create_thumb($nom);
-//						$source = create_thumb($img_url);
 						$src = create_thumb($nom);
 			
 						//Petite miniature, pour la galerie
 						$l_src = imagesx($src);
-//						echo $largeur_source.'-célarge';
 						$h_src = imagesy($src);
-//						echo $h_src.'-céhaut';
 						$dest = new_thumb($l_src,$h_src,'res');
-//						$new_height = round(($h_src*200)/$l_src);
-//						if(imageistruecolor($nom))
-//							$dest = imagecreatetruecolor(200,$new_height);
-//						else
-//							$dest = imagecreate(200,$new_height);
 						$l_dest = imagesx($dest);
 						$h_dest = round(($l_dest*$h_src)/$l_src);
 						//On crée l'image
@@ -73,7 +50,6 @@
 						$img_url_mini = get_image_link($nom,'mini');
 			
 						//On regroupe les variables des urls pour la requête
-//						$img_values[] = $db->escape($img_url_mini);
 						if(isset($oldfile))
 						{
 	 						//c'est une édition, donc on update
@@ -88,21 +64,16 @@
 				}
 				else
 				{
-//					$img_url = $oldfile;
-//					$img_values = '';
 					$list_errors = $lang_site['Admin error while uploading'].'<br />';
 					foreach($up_errors as $error)
 					{
 						$list_errors .= $error.'<br />';
 					}
 					site_msg($list_errors);
-//					exit(print_r($up_errors));
 				}
 			}
 			else
 			{
-//				$img_url = $oldfile;
-//				$img_values = '';
 				$list_errors = $lang_site['Admin upload failed'].'<br />';
 				foreach($up_errors as $error)
 				{
@@ -112,11 +83,4 @@
 			}
 		}
 	}
-/*	else
-	{
-		//Rien n'a été envoyé.  On n'affiche le message d'erreur que pour les ajouts d'entrée
-//		$img_url = $oldfile;
-//		$img_values = '';
-		site_msg($lang_site['Admin no pic']);
-	}*/
 ?>

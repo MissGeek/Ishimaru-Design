@@ -435,8 +435,6 @@ elseif(isset($_GET['edit_tut']))
 </form>
 <?php require './includes/bottom.php';
 }
-
-/*** Cette partie est encore buggée ! ***/
 elseif(isset($_GET['del_tut']))
 {
 	site_confirm_referrer('admin_tutorials.php');
@@ -459,10 +457,10 @@ elseif(isset($_GET['del_tut']))
 
 		if ($part_ids != '')
 		{
-			$db->query('DELETE FROM tuts_text WHERE text_id IN('.$part_ids.')') or error('Unable to prune tutorial parts', __FILE__, __LINE__, $db->error());
+			$db->query('DELETE FROM tuts_texts WHERE text_id IN('.$part_ids.')') or error('Unable to prune tutorial parts', __FILE__, __LINE__, $db->error());
 		}
 		//Pour la suppression de l'icône.  Commenté pour le moment
-		$result2 = $db->query('SELECT tentry_icon FROM tuts_entries WHEHE tentry_id='.$tut_id) or error('Unable to get tutorial data', __FILE__, __LINE__, $db->error());
+		$result2 = $db->query('SELECT tentry_icon FROM tuts_entries WHERE tentry_id='.$tut_id) or error('Unable to get tutorial data', __FILE__, __LINE__, $db->error());
 		$img_to_delete = $db->result($result2);
 		if(!empty($img_to_delete))
 			remove_file($img_to_delete,'tut');

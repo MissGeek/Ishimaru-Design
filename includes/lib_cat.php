@@ -1,65 +1,59 @@
 <?php
 /*
 *
-* Fonctions pour la section des catégories
+* Functions for categories sections
 *
 */
 
-/*function get_res_lang($id)
-{
-	global $db;
-	$result = $db->query('SELECT rentry_publish FROM res_entries WHERE rentry_id=\''.$id.'\'');
-	$lang = $db->fetch_row($result);
-	return $lang['rentry_publish'];
-}*/
-
+/*Function to prune subcategories and its content*/
 function prune_res_subcat($subcatid)
 {
 	global $db;
 
-//	$extra_sql = ($prune_date != -1) ? ' AND last_post<'.$prune_date : '';
+	// Fetch resources to prune
+	$r = $db->query('SELECT rentry_id FROM res_entries WHERE rentry_subcatid='.$subcatid) or error('Unable to fetch topics', __FILE__, __LINE__, $db->error());
 
-//	if (!$prune_sticky)
-//		$extra_sql .= ' AND sticky=\'0\'';
-
-	// Fetch topics to prune
-	$result = $db->query('SELECT rentry_id FROM res_entries WHERE rentry_subcatid='.$subcatid) or error('Unable to fetch topics', __FILE__, __LINE__, $db->error());
-
-	$res_ids = '';
-	while ($row = $db->fetch_row($result))
-		$res_ids .= (($res_ids != '') ? ',' : '').$row[0];
-
-
-	if ($res_ids != '')
+	if($db->num_rows($r) > 0)
 	{
-		// Fetch screenshots to prune
-		$result = $db->query('SELECT rscreen_id,rscreen_url_full FROM res_screens WHERE rscreen_entryid IN('.$res_ids.')', true) or error('Unable to fetch posts', __FILE__, __LINE__, $db->error());
-
-		$screen_ids = '';
-		$img_te_delete = array();
-		while ($row = $db->fetch_assoc($result))
+		$res_ids = '';
+		while ($resrow = $db->fetch_assoc($r))
 		{
-			$screen_ids .= (($screen_ids != '') ? ',' : '').$row['rscreen_id'];
-			$img_to_delete[] = $row['rscreen_url_full'];
-		}
+			$res_ids .= (($res_ids != '') ? ',' : '').$resrow['rentry_id'];
 
-		if ($screen_ids != '')
-		{
-			//on supprime les images avant les requêtes, car sinon on ne pourra plus récupérer les URLs relatifs
-			foreach($img_to_delete as $del_file)
+			if(file_exists('./img/res-'.$resrow['rentry_id']))
 			{
-				remove_file($del_file,'res');
+				clear_dir('./img/res-'.$resrow['rentry_id']);
 			}
-			// Delete topics
-			$db->query('DELETE FROM res_entries WHERE rentry_id IN('.$res_ids.')') or error('Unable to prune resources', __FILE__, __LINE__, $db->error());
+		}
+		if ($res_ids != '')
+		{
+			// Fetch screenshots to prune
+			$img = $db->query('SELECT rscreen_id,rscreen_url_full FROM res_screens WHERE rscreen_entryid IN('.$res_ids.')') or error('Unable to fetch posts', __FILE__, __LINE__, $db->error());
 
-			// Delete posts
-			$db->query('DELETE FROM res_screens WHERE rscreen_id IN('.$screen_ids.')') or error('Unable to prune screenshots', __FILE__, __LINE__, $db->error());
+			$screen_ids = '';
+			while ($imgrow = $db->fetch_assoc($img))
+			{
+				$screen_ids .= (($screen_ids != '') ? ',' : '').$imgrow['rscreen_id'];
+			}
+
+			if ($screen_ids != '')
+			{
+				// Delete resources
+				$db->query('DELETE FROM res_entries WHERE rentry_id IN('.$res_ids.')') or error('Unable to prune resources', __FILE__, __LINE__, $db->error());
+
+				// Delete screenshots
+				$db->query('DELETE FROM res_screens WHERE rscreen_id IN('.$screen_ids.')') or error('Unable to prune screenshots', __FILE__, __LINE__, $db->error());
+			}
+			else //Some resources might have no screenshot
+			{
+				// Delete resources
+				$db->query('DELETE FROM res_entries WHERE rentry_id IN('.$res_ids.')') or error('Unable to prune resources', __FILE__, __LINE__, $db->error());
+			}
 		}
 	}
 }
 
-
+/*Versions pruning*/
 function prune_versions($catid)
 {
 	global $db;
@@ -72,14 +66,15 @@ function prune_versions($catid)
 
 	if ($ver_ids != '')
 	{
-		$db->query('DELETE FROM tuts_versions WHERE version_id IN('.$ver_ids.')') or error('Unable to prune versions', __FILE__, __LINE__, $db->error());
+		$db->query('DELETE FROM tuts_versions WHERE version_id IN('.$ver_ids.')') or error('Unable to prune versions', __FILE__, __LINE__, $db->error());
 	}
 }
 
+/*Tutorials pruning*/
 function prune_tutorials($id,$type)
 {
 	global $db;
-	// Fetch topics to prune
+	// Fetch tutorials to prune
 	if($type == 'cat')	
 		$sql = 'SELECT tentry_id FROM tuts_entries WHERE tentry_catid='.$id;
 	elseif($type == 'ver')
@@ -93,12 +88,26 @@ function prune_tutorials($id,$type)
 
 	if ($tut_ids != '')
 	{
-		$t = $db->query('SELECT tentry_icon FROM tuts_entries WHERE tentry_id IN('.$tut_ids.')');
-		while($icon = $db->fetch_row($t))
-			remove_file($icon,'tuts');
+		$txt = $db->query('SELECT text_id, text_name FROM tuts_texts WHERE text_entryid IN('.$tut_ids.')') or error('Unable to get tutorial parts', __FILE__, __LINE__, $db->error());
+		
+		$part_ids = '';
+		while ($row = $db->fetch_assoc($txt))
+			$part_ids .= (($part_ids != '') ? ',' : '').$row['text_id'];
 
-		// Delete topics
-		$db->query('DELETE FROM tuts_entries WHERE tentry_id IN('.$res_ids.')') or error('Unable to prune resources', __FILE__, __LINE__, $db->error());
+		if ($part_ids != '')
+		{
+			//Delete tutorial parts
+			$db->query('DELETE FROM tuts_texts WHERE text_id IN('.$part_ids.')') or error('Unable to prune tutorial parts', __FILE__, __LINE__, $db->error());
+		}
+		
+		$t = $db->query('SELECT tentry_icon FROM tuts_entries WHERE tentry_id IN('.$tut_ids.')') or error('Unable to get tutorial icon', __FILE__, __LINE__, $db->error());
+		while($icon = $db->fetch_assoc($t))
+		{
+			remove_file($icon['tentry_icon'],'tut');
+		}
 
+		// Delete tutorials
+		$db->query('DELETE FROM tuts_entries WHERE tentry_id IN('.$tut_ids.')') or error('Unable to prune tutorials', __FILE__, __LINE__, $db->error());
 	}
 }
+
