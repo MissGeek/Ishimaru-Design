@@ -6,7 +6,7 @@ if($module == 'resources')
 	if (file_exists('./cache/cache_sub_res-'.$lang.'.php'))
 		include './cache/cache_sub_res-'.$lang.'.php';
 
-	if (!defined('PUN_ADM_SUB_RES_LOADED'))
+	if (!defined('PUN_SUB_RES_LOADED'))
 	{
 		if (!defined('SITE_CACHE_FUNCTIONS_LOADED'))
 			require './includes/cache.php';
@@ -20,7 +20,7 @@ elseif($module == 'tutorials')
 	if (file_exists('./cache/cache_sub_tuts-'.$lang.'.php'))
 		include './cache/cache_sub_tuts-'.$lang.'.php';
 
-	if (!defined('PUN_ADM_SUB_TUTS_LOADED'))
+	if (!defined('PUN_SUB_TUTS_LOADED'))
 	{
 		if (!defined('SITE_CACHE_FUNCTIONS_LOADED'))
 			require './includes/cache.php';

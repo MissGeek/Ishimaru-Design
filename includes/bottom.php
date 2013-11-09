@@ -33,8 +33,8 @@
 		</div>
 	  </div>
 	</div>
-<script type="text/javascript"
-src="http://api.mywot.com/widgets/ratings.js"></script>
+<!-- script type="text/javascript"
+src="http://api.mywot.com/widgets/ratings.js"></script -->
   </body>
 </html>
 <?php

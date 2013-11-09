@@ -78,6 +78,7 @@ function generate_tuts_submenu_cache($lang)
 	$fh = @fopen('./cache/cache_sub_tuts-'.$lang.'.php', 'wb');
 	if (!$fh)
 		error('Unable to write tutorial submenu file to cache directory. Please make sure PHP has write access to the directory \'cache\' (outside FluxBB directory)', __FILE__, __LINE__);
+	$output = '<?php'."\n\n".'if (!defined(\'PUN\')) exit;'."\n".'define(\'PUN_SUB_TUTS_LOADED\', 1);'."\n\n".'?>';
 			while($cur_link = $db->fetch_assoc($menu_query))
 				$output .= '<li><a href="tutorials.php?cat='.$cur_link['tcat_id'].'">'.pun_htmlspecialchars(shorttext_lang($cur_link['tcat_clearname'],$lang)).'</a></li>';
 	fwrite($fh, $output);

@@ -5,19 +5,19 @@ if(isset($_GET['act']))
 	if($_GET['act'] == 'install')
 	{
 		$form = array(
-			'site_desc'				=> trim($_POST['form']['site_desc']),
-			'forum_url'				=> trim($_POST['form']['forum_url']),
-			'base_url'				=> trim($_POST['form']['base_url']),
+			'site_desc'			=> trim($_POST['site_desc']),
+			'forum_url'			=> trim($_POST['forum_url']),
+			'base_url'			=> trim($_POST['base_url']),
 			'enable_intro'			=> 0,
-			'site_intro'				=> '',
+			'site_intro'			=> '',
 			'enable_news'			=> 0,
-			'forum_news'				=> '',
+			'forum_news'			=> '',
 			'nb_news_home'			=> 10,
 			'nb_news_page'			=> 10,
-			'enable_res'				=> 0,
+			'enable_res'			=> 0,
 			'nb_res_home'			=> 10,
 			'styles_per_page'		=> 12,
-			'hacks_per_page'			=> 12,
+			'hacks_per_page'		=> 12,
 			'enable_tuts'			=> 0,
 			'nb_tuts_home'			=> 10,
 			'tuts_per_page'			=> 10,
@@ -25,12 +25,14 @@ if(isset($_GET['act']))
 			'nb_lastposts'			=> 10,
 			'enable_social'			=> 0,
 			'social_links'			=> '',
-			'enable_footer_links'	=> 0,
+			'enable_footer_links'		=> 0,
 			'footer_sitelinks'		=> '',
 			'footer_affiliates'		=> '',
 			'enable_ads'				=> 0,
 			'your_ads'				=> 'Saisissez votre publicité ici.'
 		);
+
+// die($form['base_url']);
 
 		$message = '';
 		if($form['forum_url'] == '')
@@ -47,7 +49,7 @@ if(isset($_GET['act']))
 		if($form['base_url'] == '')
 			$message = '<p>Vous devez saisir l\'URL de base de votre site pour que votre site puisse fonctionner correctement !</p>';
 		elseif($base_to_check != $my_base)
-			$message = '<p>Le chemin saisi n\'est pas bon ou un problème est survenu lors de l\'upload des fichiers !<br />La base de référence : '.$base_to_check.'<br />Ma base : '.$my_base.'</p>';
+			$message = '<p>Le chemin saisi n\'est pas bon !<br />La base de référence : '.$base_to_check.'<br />Ma base : '.$my_base.'</p>';
 		else
 		{
 			define ('BASE_URL',$form['base_url']);
@@ -549,9 +551,9 @@ if(isset($_GET['act']))
 			foreach ($form as $key => $input)
 			{
 				if ($input != '' || !is_int($input))
-					$value = '\''.$db->escape($input).'\'';
+					$input = '\''.$db->escape($input).'\'';
 
-				$db->query('INSERT INTO site_config (conf_name,conf_value) VALUES(\'o_'.$key.'\','.$value.')') or error('Unable to insert site config', __FILE__, __LINE__, $db->error());
+				$db->query('INSERT INTO site_config (conf_name,conf_value) VALUES(\'o_'.$key.'\','.$input.')') or error('Unable to insert site config', __FILE__, __LINE__, $db->error());
 			}
 
 			// Regenerate the config cache
@@ -570,6 +572,7 @@ if(isset($_GET['act']))
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<meta charset='utf-8'>
 <title>Installation terminée !</title>
 <style type="text/css">
 *{margin:0;padding:0;}
@@ -603,6 +606,7 @@ p.send {text-align:center;}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<meta charset='utf-8'>
 <title>Installation du site</title>
 <style type="text/css">
 *{margin:0;padding:0;}
@@ -632,17 +636,17 @@ p.send {text-align:center;}
 		<p>
 			<label for="site-desc">Description du site</label><br />
 			<em>Utilisez ce format pour chaque langue, en séparant d'un retour chariot : {fr|La description de mon super site}</em><br />
-			<textarea name="form[site_desc]" id="site-desc" cols="60" rows="5"><?php echo !empty($form['site_desc']) ? pun_htmlspecialchars($form['site_desc']) : '{fr|exemple de description}'."\n".'{en|Sample site description}'; ?></textarea>
+			<textarea name="site_desc" id="site-desc" cols="60" rows="5"><?php echo !empty($form['site_desc']) ? htmlspecialchars($form['site_desc']) : '{fr|exemple de description}'."\n".'{en|Sample site description}'; ?></textarea>
 		</p>
 		<p>
 			<label for="forum-url">Chemin relatif du forum</label><br />
 			<em>Pour assurer le bon fonctionnement du site, vous devez saisir le chemin relatif de votre forum FluxBB à partir de votre site.  Par exemple, si votre site est à la racine et que votre forum FluxBB se trouve dans un dossier nommé « fluxbb », vous devez saisir « ./fluxbb/ » dans le champs</em><br />
-			<input type="text" size="30" name="form[forum_url]" id="forum-url" value="<?php echo !empty($form['forum_url']) ? $form['forum_url'] : './fluxbb/'; ?>" />
+			<input type="text" size="30" name="forum_url" id="forum-url" value="<?php echo !empty($form['forum_url']) ? $form['forum_url'] : './fluxbb/'; ?>" />
 		</p>
 		<p>
 			<label for="base-url">URL de base de votre site</label><br />
 			<em>Certaines fonctionnalités requièrent l'URL absolue du site pour son bon fonctionnement.  Si par exemple l'adresse de votre site est « http://www.pouet.com » et que votre site se trouve à la racine, saisissez « http://www.pouet.com/ ».</em><br />
-			<input type="text" size="30" name="form[base_url]" id="base-url" value="<?php echo !empty($form['base_url']) ? $form['base_url'] : 'http://exemple.com/'; ?>" />
+			<input type="text" size="30" name="base_url" id="base-url" value="<?php echo !empty($form['base_url']) ? $form['base_url'] : 'http://exemple.com/'; ?>" />
 		</p>
 	</fieldset>
 	<p class="send"><input type="submit" value="Installer" /></p>

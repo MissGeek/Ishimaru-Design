@@ -180,6 +180,9 @@ ul.lasttopics li { border-bottom:#7ea645 1px solid; }
 	margin-bottom:10px;
 	font-size:1.4em;
 }
+#main h5 {
+	font-size: 1.25em;
+}
 #main p {
 	font-size:0.8em;
 	margin: 10px 0px;
@@ -347,7 +350,7 @@ h4.subtitle {
 
 /* Autant réunir les largeurs ici */
 .catblock { width:220px;}
-.style-thumb { width: 230px; }
+.style-thumb { width: 220px; }
 .mod-block { width: 349px; }
 #about, #latest-news, #latest-tuts, #latest-styles,
 #res-fr, #res-en, #tut-fr, #tut-en, #adm-menu, #adm-stats { width: 340px; }
@@ -607,4 +610,94 @@ select { font-weight: normal; font-size: 0.9em; }
 #grid {
 	position:absolute;
 	z-index:10;
+}
+
+
+/*Codebox*/
+.codebox {
+	border-style: solid;
+	border-width: 1px;
+	margin: 0.75em 1em;
+	padding: 0;
+}
+
+.quotebox {
+	border-style: solid;
+	border-width: 1px 1px 1px 3px;
+	margin: 0.75em 1em;
+	padding: 0 0.75em;
+}
+
+.quotebox cite {
+	display: block;
+	padding: 0.75em 0 0 0;
+	font-weight: bold;
+	line-height: 1.462em;
+}
+
+.quotebox blockquote {
+	overflow: hidden;
+	width: 100%;
+}
+
+.codebox pre {
+	overflow:hidden;
+	overflow-x: auto;
+	width: 100%;
+	direction: ltr;
+	text-align: left;
+}
+
+* html .codebox pre {
+	padding-bottom: 10px;
+}
+
+*:first-child+html .codebox pre {
+	padding-bottom: 10px;
+}
+
+.codebox pre code {
+	padding: 0.75em;
+	white-space: pre;
+}
+
+div[class*=codebox] pre code {
+	display: inline-block;
+}
+
+* html .codebox pre code {
+	display: block;
+}
+
+.codebox pre.vscroll {
+	height: 32em;
+	overflow: auto;
+	overflow-y: auto
+}
+
+.quotebox {
+	background: #f9fae5;
+	border-color: #bdbc7a;
+	color: #566579;
+}
+
+.quotebox cite {
+	color: #83866a;
+}
+
+.codebox, #punhelp .codebox code {
+	background: #333;
+	color: #fff;
+}
+
+#corps ul li p, #corps ul li p {
+	margin: 0;
+	padding: 0;
+}
+.subpart-text ul, .subpart-text ol {
+	padding-left: 20px;
+}
+
+.style ul {
+	padding-left: 20px;
 }

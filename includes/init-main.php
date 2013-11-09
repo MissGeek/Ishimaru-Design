@@ -14,7 +14,55 @@ if(!defined('PUN_SITE'))
 }
 require PUN_ROOT.'include/common.php';
 // Load site language file
-require './includes/lang-fr.php';
+//Check before loading language file
+//Has the visitor changed language ?
+if(isset($_GET['lang']) && $_GET['lang'] != '')
+{
+	if($_GET['lang'] == 'fr')
+	{
+		require './includes/lang-fr.php';
+		setcookie('sitelang','fr',time()+60*60*24*365,'/','ishimaru.pingveno.net');	
+	}
+	elseif($_GET['lang'] == 'en')
+	{
+		require './includes/lang-en.php';
+		setcookie('sitelang','en',time()+60*60*24*365,'/','ishimaru.pingveno.net');
+	}
+}
+//Does the visitor already has a cookie ?
+elseif(isset($_COOKIE['sitelang']) && $_COOKIE['sitelang'] != '')
+{
+	if($_COOKIE['sitelang'] == 'fr')
+	{
+		require './includes/lang-fr.php';
+	}
+	elseif($_COOKIE['sitelang'] == 'en')
+	{
+		require './includes/lang-en.php';
+	}
+}
+//The visitor has just arrived for the first time, so we check his/her browser preferences in order to load the right language file and set a cookie for the user.
+else
+{
+	$Language = explode(',',$_SERVER['HTTP_ACCEPT_LANGUAGE']);
+	$navlang = strtolower(substr(chop($Language[0]),0,2));
+	if($navlang == 'fr')
+	{
+		require './includes/lang-fr.php';
+		setcookie('sitelang','fr',time()+60*60*24*365,'/','ishimaru.pingveno.net');
+	}
+	elseif($navlang == 'en')
+	{
+		require './includes/lang-en.php';
+		setcookie('sitelang','en',time()+60*60*24*365,'/','ishimaru.pingveno.net');
+	}
+	else
+	{
+		require './includes/lang-en.php';
+		setcookie('sitelang','en',time()+60*60*24*365,'/','ishimaru.pingveno.net');
+	}
+}
+// require './includes/lang-fr.php';
 $lang = $lang_site['Lang'];
 
 //Load functions library

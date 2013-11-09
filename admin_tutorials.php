@@ -179,7 +179,7 @@ elseif(isset($_GET['edit_tut']))
 <form method="post" action="admin_tutorials.php?edit_tut=<?php echo $tut_id; ?>&amp;add_part=<?php echo $tut_id; ?>">
 	<p class="form">
 		<label for="partname"><?php echo $lang_site['Admin part name']; ?><br /><input type="text" name="part_name" id="partname" size="50" maxlength="128" /></label><br />
-		<label for="parttext"><?php echo $lang_site['Admin part text']; ?><br /><textarea name="part_text" id="parttext" cols="70" rows="5"></textarea></label><br />
+		<label for="parttext"><?php echo $lang_site['Admin part text']; ?><br /><textarea name="part_text" id="parttext" cols="70" rows="10"></textarea></label><br />
 	</p>
 	<p class="submit"><input type="submit" name="save" value="<?php echo $lang_site['Save changes']; ?>" /> &nbsp; <a href="javascript:history.go(-1)"><?php echo $lang_site['Go back']; ?></a></p>
 </form>
@@ -225,7 +225,7 @@ elseif(isset($_GET['edit_tut']))
 <form method="post" action="admin_tutorials.php?edit_tut=<?php echo $edit_tut; ?>&amp;edit_part=<?php echo $part_id; ?>" enctype="multipart/form-data">
 	<p class="form">
 		<label for="partname"><?php echo $lang_site['Admin part name']; ?><br /><input type="text" name="part_name" id="partname" size="50" maxlength="128" value="<?php echo pun_htmlspecialchars($cur_part['text_name']); ?>" /></label><br />
-		<label for="parttext"><?php echo $lang_site['Admin part text']; ?><br /><textarea name="part_text" id="parttext" cols="70" rows="5"><?php echo pun_htmlspecialchars($cur_part['text_text']); ?></textarea></label><br />
+		<label for="parttext"><?php echo $lang_site['Admin part text']; ?><br /><textarea name="part_text" id="parttext" cols="70" rows="10"><?php echo pun_htmlspecialchars($cur_part['text_text']); ?></textarea></label><br />
 	</p>
 	<p class="submit"><input type="submit" name="save" value="<?php echo $lang_site['Save changes']; ?>" /> &nbsp; <a href="javascript:history.go(-1)"><?php echo $lang_site['Go back']; ?></a></p>
 </form>

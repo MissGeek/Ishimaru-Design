@@ -115,6 +115,7 @@ elseif(isset($_GET['subcat']))
 <h3><?php echo order_by_lang($lang,$catname,$subname); ?></h3>
 <?php echo $subdesc;
 		$row = 0;
+		$class = '';
 		while($cur_res = $db->fetch_assoc($res_result))
 		{
 			++$row;
@@ -122,6 +123,8 @@ elseif(isset($_GET['subcat']))
 				$class = 'block-left';
 			elseif(($row % 3) == 0)
 				$class = 'block-right';
+			else
+				$class = '';
 
 			$resname = pun_htmlspecialchars(shorttext_lang($cur_res['rentry_name'],$lang));
 			$resshort = pun_htmlspecialchars(shorttext_lang($cur_res['rentry_shortdesc'],$lang));
@@ -173,6 +176,7 @@ elseif(isset($_GET['res']))
 
 	$module = 'resources';
 	$titre_page = '['.$subname.'] '.$resname . $lang_site['Pagename for'] . $catname;
+	$pageclass = 'style';
 	require './includes/top.php';
 	?>
 	<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="resources.php"><?php echo $lang_site['Resources']; ?></a> &gt; <a href="resources.php?cat=<?php echo $res['rcat_id']; ?>"><?php echo $catclear; ?></a> &gt; <a href="resources.php?subcat=<?php echo $res['rsub_id']; ?>"><?php echo $subclear; ?></a> &gt; <a href="resources.php?id=<?php echo $res['rentry_id']; ?>"><?php echo $resname; ?></a></p>

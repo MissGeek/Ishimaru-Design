@@ -13,6 +13,7 @@ if($module == 'cfg')
 	if(isset($_POST['form-sent']))
 	{
 		site_confirm_referrer('admin.php?adm=cfg');
+//		site_confirm_referrer(BASE_URL.'admin.php');
 
 		$form = array(
 			'site_desc'				=> pun_trim($_POST['form']['site_desc']),

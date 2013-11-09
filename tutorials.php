@@ -11,7 +11,7 @@ if(isset($_GET['cat']))
 		site_msg($lang_site['Bad request']);
 
 	$lang = $lang_site['Lang'];
-	$cat_result = $db->query('SELECT tcat_id, tcat_name, tcat_clearname, tcat_lang, tcat_desc FROM tuts_cat WHERE tcat_id='.$cat_id.' AND tcat_lang LIKE(\'%'.$lang.'%\')') or error('Unable to fetch category data', __FILE__, __LINE__, $db->error());
+	$cat_result = $db->query('SELECT tcat_id, tcat_name, tcat_clearname, tcat_lang, tcat_desc, tcat_hasversions FROM tuts_cat WHERE tcat_id='.$cat_id.' AND tcat_lang LIKE(\'%'.$lang.'%\')') or error('Unable to fetch category data', __FILE__, __LINE__, $db->error());
 
 	if(!$db->num_rows($cat_result))
 		site_msg($lang_site['Category not found']);
@@ -23,6 +23,7 @@ if(isset($_GET['cat']))
 	$catname = pun_htmlspecialchars(shorttext_lang($cur_cat['tcat_name'],$lang));
 	$catclear = pun_htmlspecialchars(shorttext_lang($cur_cat['tcat_clearname'],$lang));
 	$catdesc = parse_message(longtext_lang($cur_cat['tcat_desc'],$lang),0);
+	$catversion = intval($cur_cat['tcat_hasversions']);
 
 	$filter = !$pun_user['is_admmod'] ? ' AND tentry_publish=1' : '';
 
@@ -31,6 +32,7 @@ if(isset($_GET['cat']))
 	//For the searchbox
 	$url = '';
 	$sql_to_add = '';
+	$orderby = '';
 	if(isset($_POST['sort']) || isset($_POST['page']))
 	{
 		$level = intval(getpost('level'));
@@ -40,7 +42,7 @@ if(isset($_GET['cat']))
 			$url .= '&amp;level='.$level;
 		}
 		$version = intval(getpost('version'));
-		if($version > 0)
+		if($version > 0 && $catversion != 0)
 		{
 			$sql_to_add .= ' AND tentry_version='.$version;
 			$url .= '&amp;version='.$version;
@@ -55,16 +57,27 @@ if(isset($_GET['cat']))
 		$sortby = pun_trim(getpost('sortby'));
 		if(array_key_exists($sortby,$sort))
 		{
-			$sql_to_add .= ' ORDER BY '.$sort[$sortby];
+			$orderby .= ' ORDER BY '.$sort[$sortby];
 			$url .= '&amp;sortby='.$sort[$sortby];
 		}
 		$order = pun_trim(getpost('order'));
-		if($order == 'desc')
+		if($order == 'asc')
 		{
-			$sql_to_add .= ' DESC';
+			$orderby .= ' ASC';
+			$url .= '&amp;order=ASC';
+		}
+		else
+		{
+			$orderby .= ' DESC';
 			$url .= '&amp;order=DESC';
 		}
 	}
+	else
+	{
+		$orderby .= ' ORDER BY tentry_id DESC';
+		$url .= '&amp;order=DESC';
+	}
+
 	// To avoid 10km-long pages, we'll paginate them
 	define('NB_TUTS',$site_config['o_tuts_per_page']);
 	if(isset($_GET['p']))
@@ -83,12 +96,13 @@ if(isset($_GET['cat']))
 	$sql_limit = ' LIMIT '.$to_start.','.NB_TUTS;
 
 
-	$tut_result = $db->query($sql . $sql_to_add . $sql_limit) or error('Unable to get tutorial data', __FILE__, __LINE__, $db->error());
+	$tut_result = $db->query($sql . $sql_to_add . $orderby . $sql_limit) or error('Unable to get tutorial data', __FILE__, __LINE__, $db->error());
 	if($db->num_rows($tut_result) == 0)
 		site_msg($lang_site['No tutorial']);
 
 	//For searchbox
-	$ver_result = $db->query('SELECT version_id, version_name FROM tuts_versions WHERE version_cat='.$cat_id.' ORDER BY version_name') or error('Unable to fetch version info', __FILE__, __LINE__, $db->error());
+	if($catversion != 0)
+		$ver_result = $db->query('SELECT version_id, version_name FROM tuts_versions WHERE version_cat='.$cat_id.' ORDER BY version_name') or error('Unable to fetch version info', __FILE__, __LINE__, $db->error());
 	$type_result = $db->query('SELECT type_id, type_name FROM tuts_type ORDER BY type_name') or error('Unable to fetch type info', __FILE__, __LINE__, $db->error());
 
 // Pagination
@@ -119,7 +133,7 @@ $paginate = '<p class="paginate">'.$lang_site['Pages'].':'.site_paginate($nb_pag
 				<option value="2"><?php echo $lang_site['Intermediate']; ?></option>
 				<option value="3"><?php echo $lang_site['Advanced']; ?></option>
 			</select>
-		</label> - <?php if(!empty($ver_result)): ?><label for="version"><?php echo $lang_site['Version']; ?>
+		</label> - <?php if(!empty($ver_result) && $catversion != 0): ?><label for="version"><?php echo $lang_site['Version']; ?>
 		<select id="version" name="version">
 			<option value="0"><?php echo $lang_site['All']; ?></option>
 <?php
@@ -146,8 +160,8 @@ $paginate = '<p class="paginate">'.$lang_site['Pages'].':'.site_paginate($nb_pag
 			</select>
 		</label> - <label for="order"><?php echo $lang_site['Order']; ?>
 			<select id="order" name="order">
-				<option value="asc"><?php echo $lang_site['Ascending']; ?></option>
 				<option value="desc"><?php echo $lang_site['Descending']; ?></option>
+				<option value="asc"><?php echo $lang_site['Ascending']; ?></option>
 			</select>
 		</label>
 	</p>

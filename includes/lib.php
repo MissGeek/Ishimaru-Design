@@ -289,15 +289,18 @@ function site_confirm_referrer($script, $error_msg = false)
 	if (empty($_SERVER['HTTP_REFERER']))
 		site_msg($error_msg ? $error_msg : $lang_site['Bad referrer']);
 
+	$base = BASE_URL;
 	$referrer = parse_url(strtolower($_SERVER['HTTP_REFERER']));
 	// Remove www subdomain if it exists
 	if (strpos($referrer['host'], 'www.') === 0)
 		$referrer['host'] = substr($referrer['host'], 4);
 
-	$valid = parse_url(strtolower('http://localhost/sites/ishimaru-v6/'.$script));
+	$valid = parse_url(strtolower($base.'/'.$script));
 	// Remove www subdomain if it exists
 	if (strpos($valid['host'], 'www.') === 0)
 		$valid['host'] = substr($valid['host'], 4);
+	if (strpos($valid['path'], '/') === 0)
+		$valid['path'] = substr($valid['path'],1);
 
 	// Check the host and path match. Ignore the scheme, port, etc.
 	if ($referrer['host'] != $valid['host'] || $referrer['path'] != $valid['path'])

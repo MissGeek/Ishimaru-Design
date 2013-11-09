@@ -52,7 +52,7 @@ function process_form(the_form)
   </head>
   <body>
 	<div id="global">
-	<!--img id="grid" src="style/980grid-16col2.png" alt="" width="980" height="1600" /-->
+	<!-- img id="grid" src="style/980grid-16col2.png" alt="" width="980" height="1600" / -->
 		<div id="header">
 		  <div id="desc">
 			<h1><?php echo $pun_config['o_board_title']; ?></h1>
@@ -73,4 +73,4 @@ function process_form(the_form)
 	  </div>
 <div id="corps">
 	<?php include('./includes/sidebar.php'); ?>
-	<div id="main"><a name="content" id="content"></a>
+	<div id="main"<?php if(!empty($pageclass)): echo ' class="'.$pageclass.'"'; endif; ?>><a name="content" id="content"></a>
