@@ -419,6 +419,7 @@ $lang_site = array(
 	'Admin no language' => 'Aucune langue n’a été cochée !',
 	'Admin no page title' => 'Le titre de la page est vide !',
 	'Admin no clean title' => 'Le titre court est vide !',
+	'Admin no download' => 'Aucun lien de téléchargement n’a été fourni !',
 
 	'Admin must have categories' => 'Vous devez avoir créé des catégories avant d’utiliser cette page !',
 	'Admin must be integer'	=>	'La position doit être indiquée sous forme de nombre entier positif.',

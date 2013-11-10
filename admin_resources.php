@@ -16,7 +16,7 @@ if(isset($_GET['add_res']))
 		if($cat_id < 1 || $sub_id < 1)
 			site_msg($_POST['Bad request']);
 
-		$resname = pun_trim($_POST['resname']);	
+		$resname = pun_trim($_POST['resname']);
 		if($resname == '')
 			site_msg($lang_site['Admin no resname']);
 	
@@ -48,7 +48,7 @@ if(isset($_GET['add_res']))
 
 		$download = pun_trim($_POST['download']);
 		if($download == '')
-			site_msg($lang_site['No download link']);
+			site_msg($lang_site['Admin no download']);
 		$now = time();
 
 		$sql = 'INSERT INTO res_entries(rentry_id,rentry_name,rentry_shortdesc,rentry_desc,rentry_authornotes,rentry_catid,rentry_subcatid,rentry_download,rentry_lang,rentry_publish,rentry_publishdate,rentry_lastupdate) VALUES(\'\',\''.$db->escape($resname).'\',\''.$db->escape($resshort).'\',\''.$db->escape($resdesc).'\',\''.$db->escape($resnotes).'\','.$cat_id.','.$sub_id.',\''.$db->escape($download).'\',\''.$db->escape($sql_lang).'\',0,'.$now.','.$now.')';
@@ -341,7 +341,7 @@ elseif(isset($_GET['edit_res']))
 	</p>
 	<hr class="sep" />
 	<p class="form">
-		<strong class="label"><?php echo $lang_site['Languages']; ?></strong> <label for="disp_fr"><?php echo $lang_site['French']; ?></label> <input type="checkbox" name="lang_fr" id="disp_fr" <?php echo (preg_match('#fr#',$res['rentry_lang'])) ? 'checked="checked" ' : ''; ?>/> <label for="disp_en"><?php echo $lang_site['English']; ?></label> <input type="checkbox" name="lang_en" id="disp_en" <?php (preg_match('#en#',$res['rentry_lang'])) ? 'checked="checked" ' : ''; ?> /><br />
+		<strong class="label"><?php echo $lang_site['Languages']; ?></strong> <label for="disp_fr"><?php echo $lang_site['French']; ?></label> <input type="checkbox" name="lang_fr" id="disp_fr" <?php echo (preg_match('#fr#',$res['rentry_lang'])) ? 'checked="checked" ' : ''; ?>/> <label for="disp_en"><?php echo $lang_site['English']; ?></label> <input type="checkbox" name="lang_en" id="disp_en" <?php echo (preg_match('#en#',$res['rentry_lang'])) ? 'checked="checked" ' : ''; ?> /><br />
 		<label for="category"><?php echo $lang_site['Category']; ?> <select name="res_cat" id="category">
 <?php
 		$category = NULL;

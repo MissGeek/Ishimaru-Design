@@ -90,7 +90,7 @@ elseif(isset($_GET['edit_page']))
 	$titre_page = $lang_site['Admin edit page'];
 	$module = 'admin';
 	require './includes/top.php'; ?>
-<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_page.php"><?php echo $lang_site['Pages']; ?></a> &gt; <?php echo $lang_site['Admin edit page']; ?></p>
+<p class="crumbs"><?php echo $pun_config['o_board_title']; ?> &gt; <a href="index.php"><?php echo $lang_site['Home']; ?></a> &gt; <a href="admin.php"><?php echo $lang_site['Admin']; ?></a> &gt; <a href="admin_pages.php"><?php echo $lang_site['Pages']; ?></a> &gt; <?php echo $lang_site['Admin edit page']; ?></p>
 <h3><?php echo $lang_site['Admin edit page']; ?></h3>
 <?php echo $lang_site['Explain adm edit page']; ?>
 <form method="post" action="admin_pages.php?edit_page=<?php echo $edit_page; ?>">

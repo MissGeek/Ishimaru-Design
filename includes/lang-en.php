@@ -421,6 +421,7 @@ $lang_site = array(
 	'Admin no language' => 'No language was selected !',
 	'Admin no page title' => 'The page title is empty !',
 	'Admin no clean title' => 'The page short title is empty !',
+	'Admin no download' => 'No download link was given !',
 
 	'Admin must have categories' => 'You must have created at least one category before using this page !',
 	'Admin must be integer'	=>	'The position must be a positive integer.',
