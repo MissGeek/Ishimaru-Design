@@ -117,7 +117,7 @@ function generate_lasttuts_cache($lang)
 {
 	global $db, $lang_site, $site_config;
 
-	$query2 = $db->query('SELECT tentry_id, tentry_name, tcat_id, tcat_clearname FROM tuts_entries LEFT JOIN tuts_cat ON tcat_id=tentry_catid WHERE tentry_lang=\''.$lang.'\' AND tentry_publish=1 ORDER BY tentry_lastupdate DESC LIMIT 0,'.$site_config['o_nb_tuts_home']);
+	$query2 = $db->query('SELECT tentry_id, tentry_name FROM tuts_entries WHERE tentry_lang=\''.$lang.'\' AND tentry_publish=1 ORDER BY tentry_lastupdate DESC LIMIT 0,'.$site_config['o_nb_tuts_home']);
 	$fh = @fopen('./cache/cache_lasttuts-'.$lang.'.php', 'wb');
 	if (!$fh)
 		error('Unable to write last tutorial cache file to cache directory. Please make sure PHP has write access to the directory \'cache\' (outside FluxBB directory)', __FILE__, __LINE__);
@@ -125,7 +125,7 @@ function generate_lasttuts_cache($lang)
 	if($db->num_rows($query2) > 0)
 	{
 		while($tut = $db->fetch_assoc($query2))
-			$output .= "\n\t\t\t".'<li>['.shorttext_lang($tut['tcat_clearname'],$lang).'] <a href="tutorials.php?id='.$tut['tentry_id'].'">'.pun_htmlspecialchars($tut['tentry_name']).'</a></li>';
+			$output .= "\n\t\t\t".'<li><a href="tutorials.php?id='.$tut['tentry_id'].'">'.pun_htmlspecialchars($tut['tentry_name']).'</a></li>';
 	}
 	else
 		$output .= "\n\t\t\t".'<li>'.$lang_site['No tutorial'].'</li>';

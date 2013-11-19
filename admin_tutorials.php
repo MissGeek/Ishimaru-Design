@@ -517,7 +517,7 @@ if(isset($_GET['approve']))
 }
 elseif(isset($_GET['unapprove']))
 {
-	$unapprove = intval($_POST['unapprove']);
+	$unapprove = intval($_GET['unapprove']);
 	if($unapprove < 1)
 		site_msg($lang_site['Bad request']);
 

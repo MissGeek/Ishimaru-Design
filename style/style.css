@@ -182,6 +182,7 @@ ul.lasttopics li { border-bottom:#7ea645 1px solid; }
 }
 #main h5 {
 	font-size: 1.25em;
+	margin: 10px 0px;
 }
 #main p {
 	font-size:0.8em;
@@ -694,10 +695,7 @@ div[class*=codebox] pre code {
 	margin: 0;
 	padding: 0;
 }
-.subpart-text ul, .subpart-text ol {
+.subpart-text ul, .subpart-text ol, .style ul {
 	padding-left: 20px;
-}
-
-.style ul {
-	padding-left: 20px;
+	padding-bottom: 10px;
 }
