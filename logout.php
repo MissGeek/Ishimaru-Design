@@ -9,10 +9,10 @@
 if (isset($_GET['action']))
 	define('PUN_QUIET_VISIT', 1);
 
-define('PUN_ROOT', 'fluxbb14/'); //Change this value if the board's path is different
+require 'site_config.php';
 require PUN_ROOT.'include/common.php';
 require './includes/lib.php';
-define('SITE_ROOT', '/sites/ishimaru-v6/index.php'); //Page where you want your users to be redirected.  Use $_SERVER['PHP_SELF'] to find it
+define('SITE_PAGE', 'index.php'); //Page where you want your users to be redirected.  Use $_SERVER['PHP_SELF'] to find it
 
 
 // Load the login.php language file
@@ -38,7 +38,7 @@ if ($action == 'out')
 
 	pun_setcookie(1, pun_hash(uniqid(rand(), true)), time() + 31536000);
 
-	site_redirect(SITE_ROOT, $lang_login['Logout redirect']);
+	site_redirect(BASE_URL.SITE_PAGE, $lang_login['Logout redirect']);
 }
 else
 	header('Location: index.php');
